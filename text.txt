@@ -1,0 +1,4 @@
+1 - In this application i'm going to implement grasp on automobile routing problem(instance of TSP).
+2 - The client has an account , he can make a delivery request ,every request has geographic cordination ( longitude , largitude ).
+3 - The delivery man has to collect all the delivery packages ,delivery man has to follow a specific path which can update in real-time.
+4 -   
