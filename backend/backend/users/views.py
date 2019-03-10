@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from django.contrib.auth import get_user_model
+from .models import ResetPasswordCode
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserSerializer ,UserLoginSerializer, UserSerializerCreate , UserUpdateSerializer
 from rest_framework import permissions
 from django.core.exceptions import ValidationError
-from django.contrib.auth import authenticate
+
 from rest_framework.authtoken.models import Token
 
 User = get_user_model()
@@ -106,19 +107,13 @@ class UpdatePasswordView(APIView):
 class UserView(APIView):
     @staticmethod
     def get(request):
-        """
-        List users
-        """
         if not request.user.is_authenticated:
-            user = get_object_or_404(User, id=1)
+            user = User.objects.all().order_by['-id']
             return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
         return Response({"error_message": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
     @staticmethod
     def post(request):
-        """
-        Create user
-        """
         serializer = UserSerializerCreate(data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.save()
@@ -131,19 +126,11 @@ class UserView(APIView):
 class UserDetail(APIView):
     @staticmethod
     def get(request, id):
-        """
-        View individual user
-        """
-
         user = get_object_or_404(User, pk=id)
         return Response(UserSerializer(user).data)
 
     @staticmethod
     def patch(request, id):
-        """
-        Update authenticated user
-        """
-
         user = get_object_or_404(User, id=id)
         if user != request.user:
             return Response(status=status.HTTP_401_UNAUTHORIZED)

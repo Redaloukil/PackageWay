@@ -7,12 +7,11 @@ from .views import (
 
 )
 
-
 app_name = "users"
 
 urlpatterns = [
-    path(r'^login/$', LoginView.as_view()),
-    path(r'^logout/$', LogoutView.as_view()),
-    path(r'^signup/$', SignupView.as_view()),
-    path(r'^<int:pk>/$', UserDetail.as_view())
+    path('login/', LoginView.as_view()),
+    path('logout/', LogoutView.as_view()),
+    path('signup/', SignupView.as_view()),
+    path('<int:pk>/', UserDetail.as_view())
 ]

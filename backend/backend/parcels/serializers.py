@@ -6,13 +6,27 @@ from .models import Parcel
 class ParcelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parcel
-        fields = ()
+        fields = ("owner","title" , "content" , "largitude" , "longitude" )
 
 #create parcel by client
 class CreateParcelSerializer(serializers.ModelSerializer):
-    pass
+    title = serializers.CharField(max_length=255)
+    content = serializers.CharField(max_length=255)
+    largitude = serializers.FloatField(max_length=255)
+    longitude = serializers.FloatField(max_length=255)
+
+    def save(self):
+        user = None
+        request = self.context.get("request")
+        if request and hasattr(request, "user"):
+            user = request.user
+        title = self.validated_data['title']
+        article = self.validated_data['article']
 
 
-#get parcel by delivery man
+class UpdateParcelSerializer(serializers.Serializer):
+    class Meta:
+        model = Parcel
+        fields = ("largitude" , "longitude")
 
 

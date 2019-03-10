@@ -12,6 +12,9 @@ class TokenSerializer(serializers.ModelSerializer):
         model = Token
         fields = ("token",)
 
+class ResetPasswordSerializer(serializers.Serializer):
+    password = serializers.CharField(max_length=255)
+    code = serializers.CharField(max_length=255)
 
 class UserSerializerCreate(serializers.ModelSerializer):
     class Meta:
@@ -26,8 +29,9 @@ class UserSerializerCreate(serializers.ModelSerializer):
 
         validate_password(password)
         return password
+
     def validate(self, attrs):
-        return attrs
+        return 0
 
 
 
@@ -60,8 +64,9 @@ class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField(required=True)
 
     default_error_messages = {
+        'wrong_credetials':'You submitted wrong credentials ',
         'inactive_account': 'User account is disabled.',
-        'invalid_credentials': 'Unable to login with provided credentials.',
+        'invalid_credentials': 'Wrong username or password.',
     }
 
     def __init__(self, *args, **kwargs):
@@ -69,6 +74,11 @@ class UserLoginSerializer(serializers.Serializer):
         self.user = None
 
     def validate(self, attrs):
+        username = attrs.get("username")
+        password = attrs.get("password")
+        if not username and not password:
+            raise serializers.ValidationError(self.error_messages['wrong_credetials'])
+
         self.user = authenticate(self, username=attrs.get("username"), password=attrs.get("password"))
 
         if self.user:
