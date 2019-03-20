@@ -12,14 +12,19 @@ class ParcelSerializer(serializers.ModelSerializer):
 class CreateParcelSerializer(serializers.ModelSerializer):
     title = serializers.CharField(max_length=255)
     content = serializers.CharField(max_length=255)
-    largitude = serializers.FloatField(max_length=255)
-    longitude = serializers.FloatField(max_length=255)
+    largitude = serializers.FloatField()
+    longitude = serializers.FloatField()
+
+    # def validate(self , attr):
+    #     if self.user.user_type:
+    #         raise
 
     def save(self):
         user = None
         request = self.context.get("request")
         if request and hasattr(request, "user"):
             user = request.user
+        
         title = self.validated_data['title']
         article = self.validated_data['article']
 

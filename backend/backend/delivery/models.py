@@ -8,7 +8,7 @@ class Delivery(models.Model):
     largitude = models.FloatField(max_length=255)
     longitude = models.FloatField(max_length=255)
 
-    
+
     def get_cordination(self):
         return {"largitude":self.largitude,"longitude":self.longitude}
 

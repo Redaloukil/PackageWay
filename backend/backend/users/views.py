@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .serializers import UserSerializer ,UserLoginSerializer, UserSerializerCreate , UserUpdateSerializer
 from rest_framework import permissions
 from django.core.exceptions import ValidationError
-
+from backend.users.authenticate import CustomBackend
 from rest_framework.authtoken.models import Token
 
 User = get_user_model()
@@ -22,23 +22,40 @@ class SignupView(APIView):
     def post(request):
         serializer = UserSerializerCreate(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()
-            return Response(UserSerializerCreate(user).data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                user = User.objects.create_user(username=serializer.data['username'] ,
+                                                first_name=serializer.data["first_name"] ,
+                                                last_name=serializer.data['last_name'] ,
+                                                user_type=serializer.data['user_type'] ,
+                                                is_staff=True)
+            except:
+                raise Response()
+
+            if user :
+                user.set_password(serializer.data['username'])
+                user.save()
+                return Response( status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response()
 
 
 class LoginView(APIView):
     authentication_classes = ()
     permission_classes = ()
-    serializer_class = UserLoginSerializer
 
     @staticmethod
     def post(request):
-        serializer = UserLoginSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.user
-            return Response(data=UserSerializer(user).data,status=status.HTTP_200_OK)
-        return Response(data=serializer.errors,status=status.HTTP_200_OK)
+        """
+        Get user data and API token
+        """
+
+        username = request.data.get("username")
+        password = request.data.get("password")
+        user = CustomBackend.authenticate(username=username, password=password)
+        if user:
+            serializer = UserLoginSerializer(user)
+            return Response(serializer.data)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 class LogoutView(APIView):
@@ -105,11 +122,15 @@ class UpdatePasswordView(APIView):
 
 
 class UserView(APIView):
+    authentication_classes = ()
+    permission_classes = ()
+    serializer_class = UserLoginSerializer
+
     @staticmethod
     def get(request):
         if not request.user.is_authenticated:
-            user = User.objects.all().order_by['-id']
-            return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
+            users = User.objects.all()
+            return Response(UserSerializer(users , many=True).data, status=status.HTTP_200_OK)
         return Response({"error_message": "user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
     @staticmethod

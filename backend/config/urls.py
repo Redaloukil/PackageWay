@@ -19,6 +19,10 @@ urlpatterns = [
         "users/",
         include("backend.users.urls", namespace="users"),
     ),
+    path(
+        "parcels/",
+        include("backend.parcels.urls", namespace="parcels"),
+    ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(

@@ -4,6 +4,7 @@ from .models import Parcel
 from .serializers import CreateParcelSerializer , ParcelSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from users.models import User
 
 # Create your views here.
 class CreateParcelView(APIView):
@@ -40,3 +41,11 @@ class UpdateParcelView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+class ParcelPerUserView(APIView):
+    def get(self , id ):
+        user = get_object_or_404(User , id=id)
+        parcels = Parcel.objects.all(owner = user)
+        serailizer = ParcelSerializer(parcels , many=True)
+        return Response(data=serailizer.data , status=status.HTTP_200_OK)
+        
