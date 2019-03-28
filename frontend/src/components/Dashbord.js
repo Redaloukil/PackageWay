@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import {
-  FOLLOW_USER,
-  UNFOLLOW_USER,
-  PROFILE_PAGE_LOADED,
-  PROFILE_PAGE_UNLOADED
+  DASHBORD_PAGE_LOADED,
+  DASHBORD_PAGE_UNLOADED
 } from '../constants/actionTypes';
 
 const EditProfileSettings = props => {
@@ -23,25 +21,19 @@ const EditProfileSettings = props => {
   return null;
 };
 const mapStateToProps = state => ({
-  ...state.articleList,
+  ...state.parcelList,
   currentUser: state.common.currentUser,
-  profile: state.profile
+  dashbord: state.dashbord,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: payload => dispatch({ type: PROFILE_PAGE_LOADED, payload }),
-  onUnfollow: username => dispatch({
-    type: UNFOLLOW_USER,
-    payload: agent.Profile.unfollow(username)
-  }),
-  onUnload: () => dispatch({ type: PROFILE_PAGE_UNLOADED })
+  onLoad: payload => dispatch({ type: DASHBORD_PAGE_LOADED, payload }),
+  onUnload: () => dispatch({ type: DASHBORD_PAGE_UNLOADED })
 });
 
 class Dashbord extends React.Component {
   componentWillMount() {
-    this.props.onLoad(Promise.all([
-      agent.Parcels.perUser(this.props.match.params.id),
-    ]));
+    this.props.onLoad(agent.Parcels.perUser());
   }
 
   componentWillUnmount() {
@@ -54,8 +46,8 @@ class Dashbord extends React.Component {
         <li className="nav-item">
           <Link
             className="nav-link active"
-            to={`/@${this.props.profile.username}`}>
-            My Articles
+            to="">
+            My parcels
           </Link>
         </li>
     </ul>
@@ -63,14 +55,6 @@ class Dashbord extends React.Component {
   }
 
   render() {
-    const profile = this.props.profile;
-    if (!profile) {
-      return null;
-    }
-
-    const isUser = this.props.currentUser &&
-      this.props.profile.username === this.props.currentUser.username;
-
     return (
       <div className="profile-page">
 
@@ -79,11 +63,11 @@ class Dashbord extends React.Component {
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
 
-                <img src={profile.image} className="user-img" alt={profile.username} />
-                <h4>{profile.username}</h4>
-                <p>{profile.bio}</p>
+                <h4>{this.props.currentUser.username}</h4>
+                <p>{this.props.currentUser.firstName}</p>
+                <p>{this.props.currentUser.lastName}</p>
 
-                <EditProfileSettings isUser={isUser} />
+                <EditProfileSettings/>
                 
 
               </div>
@@ -95,14 +79,12 @@ class Dashbord extends React.Component {
           <div className="row">
 
             <div className="col-xs-12 col-md-10 offset-md-1">
-
+            
               <div className="articles-toggle">
                 {this.renderTabs()}
               </div>
-
-              <ParcelList
-                parcels={this.props.parcels}
-              />
+              
+              <ParcelList parcels={this.props.parcels}/>
                 
             </div>
 
@@ -115,4 +97,3 @@ class Dashbord extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashbord);
-export { Dashbord, mapStateToProps };

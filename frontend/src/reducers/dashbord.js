@@ -1,16 +1,16 @@
 import {
-  PARCEL_PAGE_LOADED,
-  PARCEL_PAGE_UNLOADED,
+  DASHBORD_PAGE_LOADED,
+  DASHBORD_PAGE_UNLOADED,
+  
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case PARCEL_PAGE_LOADED:
+    case DASHBORD_PAGE_LOADED:
       return {
-        ...state,
-        parcels: action.payload,
+        ...action.payload
       };
-    case PARCEL_PAGE_UNLOADED:
+    case DASHBORD_PAGE_LOADED:
       return {};
     default:
       return state;

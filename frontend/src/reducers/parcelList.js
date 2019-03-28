@@ -2,8 +2,8 @@ import {
   SET_PAGE,
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  PROFILE_PAGE_LOADED,
-  PROFILE_PAGE_UNLOADED,
+  DASHBORD_PAGE_LOADED,
+  DASHBORD_PAGE_UNLOADED,
   PROFILE_FAVORITES_PAGE_LOADED,
   PROFILE_FAVORITES_PAGE_UNLOADED
 } from '../constants/actionTypes';
@@ -18,18 +18,17 @@ export default (state = {}, action) => {
     case HOME_PAGE_LOADED:
       return {
         ...state,
-        articles: action.payload[1].articles,
+        articles: action.payload[1].parcels,
       };
     case HOME_PAGE_UNLOADED:
       return {};
     
-    case PROFILE_PAGE_LOADED:
-    case PROFILE_FAVORITES_PAGE_LOADED:
+    case DASHBORD_PAGE_LOADED:
       return {
         ...state,
-        articles: action.payload,
+        parcels: action.payload,
       };
-    case PROFILE_PAGE_UNLOADED:
+    case DASHBORD_PAGE_UNLOADED:
     case PROFILE_FAVORITES_PAGE_UNLOADED:
       return {};
     default:

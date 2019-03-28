@@ -15,10 +15,6 @@ class CreateParcelSerializer(serializers.ModelSerializer):
     largitude = serializers.FloatField()
     longitude = serializers.FloatField()
 
-    # def validate(self , attr):
-    #     if self.user.user_type:
-    #         raise
-
     def save(self):
         user = None
         request = self.context.get("request")

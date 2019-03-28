@@ -1,6 +1,5 @@
 import Banner from './Banner';
 import React from 'react';
-
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import {
@@ -10,7 +9,6 @@ import {
 } from '../../constants/actionTypes';
 
 
-
 const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
@@ -18,13 +16,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: (tab, pager, payload) =>
-    dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
+  onLoad: (payload) =>
+    dispatch({ type: HOME_PAGE_LOADED, payload }),
   onUnload: () =>
     dispatch({ type: HOME_PAGE_UNLOADED })
 });
 
 class Home extends React.Component {
+  componentWillMount(){
+    this.props.onLoad
+  }
   componentWillUnmount() {
     this.props.onUnload();
   }
@@ -35,12 +36,10 @@ class Home extends React.Component {
         <Banner token={this.props.token} appName={this.props.appName} />
         <div className="container page">
           <div className="row">
+            <h1>Hello world</h1>
           </div>
         </div>
       </div>
-        
-
-      
     );
   }
 }

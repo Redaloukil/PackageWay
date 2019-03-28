@@ -1,14 +1,14 @@
-import ListPagination from './ListPagination';
 import React from 'react';
-
+import {Link} from 'react-router-dom';
+import Parcel from './Parcel/index';
 const ParcelList = props => {
-  if (!props.parcels) {
+  if (props.parcels) {
     return (
       <div className="article-preview">Loading...</div>
     );
   }
 
-  if (props.articles.length === 0) {
+  if (props.parcels.length === 0) {
     return (
       <div className="article-preview">
         No articles are here... yet.
@@ -19,11 +19,9 @@ const ParcelList = props => {
   return (
     <div>
       {
-        props.articles.map(parcels => {
+        props.parcels.map(parcel => {
           return (
-            <div>
-              
-            </div>
+            <Parcel parcel={parcel}/>
           );
         })
       }

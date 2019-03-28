@@ -41,11 +41,11 @@ const Parcels = {
   all: () =>
     requests.get(`parcels/`),
   perUser:(id) => 
-    requests.get(`parcels/${id}`)  ,
+    requests.get(`parcels/users/`)  ,
   del: id =>
     requests.del(`parcels/${id}`),
   byId: id =>
-    requests.post(`parcels/${id}`),
+    requests.get(`parcels/${id}`),
   update: (id , title , body , longitude , largitude) =>
     requests.put(`parcels/${id}`, {title , body , longitude , largitude}),
   create: (title , body , longitude , largitude ) =>
@@ -53,22 +53,10 @@ const Parcels = {
 
 };
 
-const Profile = {
-  follow: username =>
-    requests.post(`/profiles/${username}/follow`),
-  get: username =>
-    requests.get(`/profiles/${username}`),
-  unfollow: username =>
-    requests.del(`/profiles/${username}/follow`)
-};
 
-const Delivery = {
 
-}
 export default {
   Parcels,
   Auth,
-  Profile,
-  Delivery,
   setToken: _token => { token = _token; }
 };

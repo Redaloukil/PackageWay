@@ -7,6 +7,7 @@ import {
   REMOVE_TAG,
   UPDATE_FIELD_EDITOR,
 } from '../constants/actionTypes';
+import { KEY } from '../constants/mapKey';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -16,7 +17,8 @@ export default (state = {}, action) => {
         title: action.payload ? action.payload.parcel.title : '',
         body: action.payload ? action.payload.parcel.body : '',
         longitude : action.payload ? action.payload.parcel.longitude : '',
-        largitude : action.payload ? action.payload.parcel.largitude : '', 
+        latitude : action.payload ? action.payload.parcel.latitude : '',
+        mapKey : action.payload ? KEY : KEY,  
       };
     case EDITOR_PAGE_UNLOADED:
       return {};
@@ -31,11 +33,7 @@ export default (state = {}, action) => {
         return { ...state, inProgress: true };
       }
       break;
-    case REMOVE_TAG:
-      return {
-        ...state,
-        tagList: state.tagList.filter(tag => tag !== action.tag)
-      };
+    
     case UPDATE_FIELD_EDITOR:
       return { ...state, [action.key]: action.value };
     default:

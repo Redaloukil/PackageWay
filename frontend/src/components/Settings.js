@@ -1,4 +1,3 @@
-import ListErrors from './ListErrors';
 import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
@@ -13,13 +12,18 @@ class SettingsForm extends React.Component {
     super();
 
     this.state = {
-      image: '',
       username: '',
-      bio: '',
-      email: '',
-      password: ''
+      firstName:'',
+      lastName:'',
+      password: '',
     };
 
+    this.passwordConfirmed = (password , confirmPassword)=>{
+      if( password === confirmPassword ){
+        return true;
+      }
+      return false;
+    }
     this.updateState = field => ev => {
       const state = this.state;
       const newState = Object.assign({}, state, { [field]: ev.target.value });
@@ -28,23 +32,23 @@ class SettingsForm extends React.Component {
 
     this.submitForm = ev => {
       ev.preventDefault();
-
-      const user = Object.assign({}, this.state);
-      if (!user.password) {
-        delete user.password;
-      }
-
-      this.props.onSubmitForm(user);
+      
+      this.props.onSubmitForm(
+        { 
+          username : this.state.username , 
+          firstName : this.state.firstName , 
+          lastName : this.state.lastName 
+        }
+      );
     };
   }
 
   componentWillMount() {
     if (this.props.currentUser) {
       Object.assign(this.state, {
-        image: this.props.currentUser.image || '',
         username: this.props.currentUser.username,
-        bio: this.props.currentUser.bio,
-        email: this.props.currentUser.email
+        firstName : this.props.currentUser.firstName,
+        lastName : this.props.currentUser.lastName,
       });
     }
   }
@@ -52,28 +56,16 @@ class SettingsForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser) {
       this.setState(Object.assign({}, this.state, {
-        image: nextProps.currentUser.image || '',
         username: nextProps.currentUser.username,
-        bio: nextProps.currentUser.bio,
-        email: nextProps.currentUser.email
+        firstName : nextProps.currentUser.firstName,
+        lastName : nextProps.currentUser.lastName,
       }));
     }
   }
-
   render() {
     return (
       <form onSubmit={this.submitForm}>
         <fieldset>
-
-          <fieldset className="form-group">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="URL of profile picture"
-              value={this.state.image}
-              onChange={this.updateState('image')} />
-          </fieldset>
-
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
@@ -82,42 +74,22 @@ class SettingsForm extends React.Component {
               value={this.state.username}
               onChange={this.updateState('username')} />
           </fieldset>
-
-          <fieldset className="form-group">
-            <textarea
-              className="form-control form-control-lg"
-              rows="8"
-              placeholder="Short bio about you"
-              value={this.state.bio}
-              onChange={this.updateState('bio')}>
-            </textarea>
-          </fieldset>
-
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
-              type="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.updateState('email')} />
+              type="text"
+              placeholder="First Name"
+              value={this.state.firstName}
+              onChange={this.updateState('firstName')} />
           </fieldset>
-
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
-              type="password"
-              placeholder="New Password"
-              value={this.state.password}
-              onChange={this.updateState('password')} />
+              type="text"
+              placeholder="Last Name"
+              value={this.state.lastName}
+              onChange={this.updateState('username')} />
           </fieldset>
-
-          <button
-            className="btn btn-lg btn-primary pull-xs-right"
-            type="submit"
-            disabled={this.state.inProgress}>
-            Update Settings
-          </button>
-
         </fieldset>
       </form>
     );
@@ -146,7 +118,7 @@ class Settings extends React.Component {
 
               <h1 className="text-xs-center">Your Settings</h1>
 
-              <ListErrors errors={this.props.errors}></ListErrors>
+              
 
               <SettingsForm
                 currentUser={this.props.currentUser}

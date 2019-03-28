@@ -17,15 +17,19 @@ class CreateParcelView(APIView):
 
 # get parcels list
 class ParcelsView(APIView):
-    def get(self):
-        parcels = Parcel.objects.all().object_by["-id"]
-        serializers = ParcelSerializer(data=parcels , many=True)
-        if serializers.is_valid():
-            return Response(data=serializers.data , status=status.HTTP_200_OK)
-        return Response(data=serializers.errors , status=status.HTTP_403_FORBIDDEN)
+    @staticmethod
+    def get(request):
+        if request.user.is_authenticated:
+            parcels = Parcel.objects.all().object_by["-id"]
+            serializers = ParcelSerializer(data=parcels , many=True)
+            if serializers.is_valid():
+                return Response(data=serializers.data , status=status.HTTP_200_OK)
+            return Response(data=serializers.errors , status=status.HTTP_403_FORBIDDEN)
+        return Response(data={'authentication_error' ,'You are not authenticated'} , status=status.HTTP_403_FORBIDDEN)
 
 class UpdateParcelView(APIView):
-    def get(self , id):
+    @staticmethod
+    def get(request , id):
         parcel = get_object_or_404(Parcel , id=id)
         serializer = ParcelSerializer(data=parcel)
         if serializer.is_valid():

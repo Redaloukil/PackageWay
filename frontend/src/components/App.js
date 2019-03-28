@@ -30,23 +30,24 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class App extends React.Component {
+  componentWillMount() {
+    //set token if exists
+    const token = window.localStorage.getItem('jwt');
+    if (token) {
+      agent.setToken(token);
+    }
+    //if token exists get current user
+    this.props.onLoad(token ? agent.Auth.current() : null, token);
+  }
+  
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
-      
       store.dispatch(push(nextProps.redirectTo));
       this.props.onRedirect();
     }
   }
   
-  componentWillMount() {
-    const token = window.localStorage.getItem('jwt');
-    if (token) {
-      agent.setToken(token);
-      
-    }
-    
-    this.props.onLoad(token ? agent.Auth.current() : null, token);
-  }
+  
 
   render() {
     if (this.props.appLoaded) {
@@ -57,10 +58,12 @@ class App extends React.Component {
             currentUser={this.props.currentUser} />
             <Switch>
               <Route exact path="/" component={Home}/>
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register}/>
-              <Route path="/create" component={Editor}/>
-              <Route path="/dashbord" component={Dashbord}/>
+              <Route path="/login/" component={Login} />
+              <Route path="/register/" component={Register}/>
+              <Route path="/edit/" component={Editor}/>
+              <Route path="/edit/:slug" component={Editor}/>
+              <Route path="/dashbord/" component={Dashbord}/>
+              <Route path="/settings/" component={Settings}/>
             </Switch>
         </div>
       );

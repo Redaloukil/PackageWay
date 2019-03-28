@@ -81,7 +81,6 @@ class ResetPasswordView(APIView):
         """
         Reset password using reset password code
         """
-
         code = request.data.get('code')
         password = request.data.get('password')
 
@@ -125,7 +124,6 @@ class UserView(APIView):
     authentication_classes = ()
     permission_classes = ()
     serializer_class = UserLoginSerializer
-
     @staticmethod
     def get(request):
         if not request.user.is_authenticated:
