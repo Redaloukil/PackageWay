@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import {
@@ -8,8 +8,14 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED
 } from '../constants/actionTypes';
+import './../styles/login.css';
+import Header from './Header';
 
-const mapStateToProps = state => ({ ...state.auth });
+const mapStateToProps = state => ({ 
+  ...state.auth,
+  appName: state.common.appName,
+  token: state.common.token 
+});
 
 const mapDispatchToProps = dispatch => ({
   onChangeUsername: value =>
@@ -42,6 +48,7 @@ class Login extends React.Component {
     const password = this.props.password;
     return (
       <div className="auth-page">
+      <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="container page">
           <div className="row">
 

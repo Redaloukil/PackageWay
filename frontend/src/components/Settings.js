@@ -15,18 +15,12 @@ class SettingsForm extends React.Component {
       username: '',
       firstName:'',
       lastName:'',
-      password: '',
     };
 
-    this.passwordConfirmed = (password , confirmPassword)=>{
-      if( password === confirmPassword ){
-        return true;
-      }
-      return false;
-    }
+    
     this.updateState = field => ev => {
       const state = this.state;
-      const newState = Object.assign({}, state, { [field]: ev.target.value });
+      const newState = Object.assign({}, state, {[field]: ev.target.value });
       this.setState(newState);
     };
 
@@ -37,7 +31,7 @@ class SettingsForm extends React.Component {
         { 
           username : this.state.username , 
           firstName : this.state.firstName , 
-          lastName : this.state.lastName 
+          lastName : this.state.lastName ,
         }
       );
     };
@@ -88,7 +82,7 @@ class SettingsForm extends React.Component {
               type="text"
               placeholder="Last Name"
               value={this.state.lastName}
-              onChange={this.updateState('username')} />
+              onChange={this.updateState('lastName')} />
           </fieldset>
         </fieldset>
       </form>
@@ -102,10 +96,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickLogout: () => dispatch({ type: LOGOUT }),
+  onClickLogout: () => 
+      dispatch({ type: LOGOUT }),
   onSubmitForm: user =>
-    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
-  onUnload: () => dispatch({ type: SETTINGS_PAGE_UNLOADED })
+      dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user)}),
+  onUnload: () => 
+      dispatch({type: SETTINGS_PAGE_UNLOADED}),
 });
 
 class Settings extends React.Component {
@@ -117,8 +113,6 @@ class Settings extends React.Component {
             <div className="col-md-6 offset-md-3 col-xs-12">
 
               <h1 className="text-xs-center">Your Settings</h1>
-
-              
 
               <SettingsForm
                 currentUser={this.props.currentUser}

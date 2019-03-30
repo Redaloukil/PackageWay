@@ -67,16 +67,18 @@ class Editor extends React.Component {
       this.submitForm = ev => {
         //verify parcel informations 
         ev.preventDefault();
-        const article = {
-          title: this.props.title,
-          body: this.props.body,
-          latitude:this.props.latitude,
-          longitude:this.props.longitude,
-          from:this.props.from,
-          to:this.props.to,
-        };
+        
+          
+          
 
-      agent.Articles.create(article);
+      agent.Parcels.create({
+        title: this.props.title,
+        body: this.props.body,
+        latitude:this.props.latitude,
+        longitude:this.props.longitude,
+        from:this.props.from,
+        to:this.props.to,
+      });
 
       this.props.onSubmit();
       };

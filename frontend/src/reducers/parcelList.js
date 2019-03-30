@@ -18,7 +18,7 @@ export default (state = {}, action) => {
     case HOME_PAGE_LOADED:
       return {
         ...state,
-        articles: action.payload[1].parcels,
+        parcels: action.payload,
       };
     case HOME_PAGE_UNLOADED:
       return {};

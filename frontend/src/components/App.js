@@ -4,7 +4,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
 import { Route, Switch } from 'react-router-dom';
-import Parcel from '../components/Parcel';
 import Editor from '../components/Editor';
 import Home from '../components/Home';
 import Login from '../components/Login';
@@ -13,6 +12,7 @@ import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
+import '../styles/style.css';
 
 const mapStateToProps = state => {
   return {
@@ -53,15 +53,12 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
-          <Header
-            appName={this.props.appName}
-            currentUser={this.props.currentUser} />
-            <Switch>
+          <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login/" component={Login} />
               <Route path="/register/" component={Register}/>
               <Route path="/edit/" component={Editor}/>
-              <Route path="/edit/:slug" component={Editor}/>
+              <Route path="/edit/:id" component={Editor}/>
               <Route path="/dashbord/" component={Dashbord}/>
               <Route path="/settings/" component={Settings}/>
             </Switch>

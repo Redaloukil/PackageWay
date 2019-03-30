@@ -1,21 +1,21 @@
-import ParcelMeta from './ParcelMeta';
-
 import React from 'react';
 import agent from '../../agent';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import marked from 'marked';
+import ParcelActions from './ParcelActions';
+
 
 
 const Parcel = props => {
   return (
-    <div>
-      <Link to="edit{`/@${props.title}`"></Link>
-      <p>{props.body}</p>
-      <p>{props.largitude}</p>
-      <p>{props.longitude}</p>
-    </div>
-  )
+      <div className="parcel-item">
+        <h1>{props.parcel.title}</h1>
+        <p>{props.parcel.body}</p>
+        <p>{props.parcel.largitude}</p>
+        <p>{props.parcel.longitude}</p>
+        { props.recovered ? <p>Recovered</p> : <p>Not Recovered Yet</p>}
+        <p>{props.arrived}</p>
+        <ParcelActions id={props.parcel.id} />
+      </div>
+    )
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Parcel);
+  
+export default Parcel;

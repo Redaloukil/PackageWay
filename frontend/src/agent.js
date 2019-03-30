@@ -34,7 +34,9 @@ const Auth = {
   register: (username,firstName , lastName , password , userType) =>
     requests.post('signup/', { username, firstName , lastName ,  password , userType}),
   save: user =>
-    requests.put('user', { user })
+    requests.put('user', { user }),
+  logout: () => 
+    requests.get('logout/'),
 };
 
 const Parcels = {

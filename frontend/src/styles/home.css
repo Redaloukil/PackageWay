@@ -1,0 +1,75 @@
+.navbar {
+    padding:2.5em;
+}
+
+#header {
+    background-image: url("./../images/background.png");
+    /* background-color:rgba(26, 188, 156,0.8); */
+    height:100vh;
+    background-size: cover;
+}
+
+
+#header-desc {
+    width:100vw;
+    position: relative;
+    top:20vh!important;
+    left:20vh!important;
+    width:40vw;
+    color:white;
+}
+
+
+#header-desc h1 {
+    font-size:550%;
+}
+
+#header-desc p {
+    font-size:150%;
+    opacity:0.7;
+}
+
+#parcel-image {
+    display: inline-block;
+    float: right;    
+    
+}
+
+#desc {
+    padding:4% 0%;
+    
+    
+}
+
+#desc h1 {
+    padding:4% 0%;
+    font-size:450%;
+    color:rgba(26, 188, 156,1.0);
+    font-weight:300;
+}
+#desc h2 {
+    padding:4% 0%;
+    font-size:220%;
+}
+#desc p {
+    opacity: 0.7;
+    font-size:120%;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+    font-size:20px;
+}
+
+.navbar-brand {
+    font-family: "Titillium Web", sans-serif;
+    text-transform: capitalize;
+    font-size: 2rem;
+    padding-top: 0rem;
+    margin-right: 2rem;
+    color: #ffffff;
+}
+
+footer {
+    background-color:rgba(52, 73, 94,1.0);
+    height:40vh;
+}

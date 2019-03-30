@@ -2,11 +2,15 @@ import Banner from './Banner';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
+import '../../styles/home.css';
+import parcelImage from'../../images/parcel.png'
+import phoneImage from '../../images/phone.png';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
   
 } from '../../constants/actionTypes';
+import Header from '../Header';
 
 
 const mapStateToProps = state => ({
@@ -24,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount(){
-    this.props.onLoad
+    // this.props.onLoad()
   }
   componentWillUnmount() {
     this.props.onUnload();
@@ -33,12 +37,52 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <Banner token={this.props.token} appName={this.props.appName} />
-        <div className="container page">
-          <div className="row">
-            <h1>Hello world</h1>
+        <header id="header">
+        
+          <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+          <div className="container-fluid">
+            <div className="row">
+              <div id="header-desc" className="col-sm-7 col-sm-offset-2">
+                <h1>Your Parcel will be right in way.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+              </div>
+              <div id=""className="col-sm-3">
+                <img id="parcel-image" src={parcelImage} width="500px"/>
+              </div>
+            </div>
           </div>
+          
+        </header>
+        {// <Banner token={this.props.token} appName={this.props.appName} />
+    }
+        <section id="desc">
+        <div className="container">
+        <div className="row">
+            
+        <div className="col-sm-4">
+          <img width="100%" height="700px" src={phoneImage}/>
         </div>
+        <div className="col-sm-7">
+          <h1>Our Transport Area Is Growing Up</h1>
+          <h2>The Fastest Way To Transport Your Parcel.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+          <h2>The Fastest Way To Transport Your Parcel.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+          <h2>The Fastest Way To Transport Your Parcel.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        </div>
+        </div>
+        </div>
+          
+        </section>
+        <footer>
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-4">
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

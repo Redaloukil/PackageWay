@@ -1,5 +1,5 @@
+  import React from 'react';
 import { Link } from 'react-router-dom';
-import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { DELETE_PARCEL } from '../../constants/actionTypes';
@@ -10,22 +10,20 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ParcelActions = props => {
-  const article = props.article;
   const del = () => {
-    props.onClickDelete(agent.Articles.del(article.slug))
+    props.onClickDelete(agent.Parcels.del())
   };
-  if (props.canModify) {
+  if (props) {
     return (
       <span>
-
+        
         <Link
-          to={`/editor/${article.slug}`}
+          to={`/edit/${props.id}`}
           className="btn btn-outline-secondary btn-sm">
-          <i className="ion-edit"></i> Edit Article
+          <i className="ion-edit"></i> Edit Parcel
         </Link>
-
         <button className="btn btn-outline-danger btn-sm" onClick={del}>
-          <i className="ion-trash-a"></i> Delete Article
+          <i className="ion-trash-a"></i> Delete Parcel
         </button>
 
       </span>
@@ -38,4 +36,4 @@ const ParcelActions = props => {
   );
 };
 
-export default connect(() => ({}), mapDispatchToProps)(ParcelActions);
+export default connect(() => {}, mapDispatchToProps)(ParcelActions);

@@ -21,7 +21,7 @@ const EditProfileSettings = props => {
   return null;
 };
 const mapStateToProps = state => ({
-  ...state.parcelList,
+  parcels : state.parcelList.parcels,
   currentUser: state.common.currentUser,
   dashbord: state.dashbord,
 });
@@ -83,8 +83,11 @@ class Dashbord extends React.Component {
               <div className="articles-toggle">
                 {this.renderTabs()}
               </div>
+              <br/>
+              <div>
+                <ParcelList parcels={this.props.parcels}/>
+              </div>
               
-              <ParcelList parcels={this.props.parcels}/>
                 
             </div>
 
