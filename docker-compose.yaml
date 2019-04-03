@@ -1,0 +1,37 @@
+version: '2'
+
+volumes:
+  postgres_data_local: {}
+  postgres_backup_local: {}
+
+
+services:
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: ./compose/local/frontend/Dockerfile
+    volumes:
+    - ./frontend/:/app
+    ports:
+    - "3000:3000"
+  
+  django: &django
+    build:
+      context: ./backend/
+      dockerfile: ./compose/local/django/Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app
+    environment:
+      - USE_DOCKER=yes
+    ports:
+      - "8000:8000"
+    command: /start.sh
+  
+    
+
+  
+
+  
+  

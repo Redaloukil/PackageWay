@@ -24,8 +24,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
   onChangeConfirmPassword: value =>
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'cpassword', value }),
-  onSubmit: (username , firstName , lastName ,password , userType ) => {
-      const payload = agent.Auth.register(username,password);
+  onSubmit: (username , firstName , lastName ,password) => {
+      const payload = agent.Auth.register(username, firstName , lastName , password);
       dispatch({ type: REGISTER, payload })},
   onUnload: () =>
     dispatch({ type: REGISTER_PAGE_UNLOADED })
@@ -40,9 +40,9 @@ class Register extends React.Component {
     this.changePassword = ev => this.props.onChangePassword(ev.target.value);
     this.changeCPassword = ev => this.props.onChangeCPassword(ev.target.value);
     this.changeUserType = ev => this.props.onChangeUserType(ev.target.value);
-    this.submitForm = (username, firstName , lastName ,  password , userType ) => ev => {
+    this.submitForm = (username, firstName , lastName ,  password ) => ev => {
       ev.preventDefault();
-      this.props.onSubmit(username,password);
+      this.props.onSubmit(username ,firstName , lastName ,password);
     }
   }
 
@@ -74,7 +74,7 @@ class Register extends React.Component {
 
               
 
-              <form onSubmit={this.submitForm(username, firstName , lastName , password , userType )}>
+              <form onSubmit={this.submitForm(username, firstName , lastName , password)}>
                 <fieldset>
 
                   <fieldset className="form-group">

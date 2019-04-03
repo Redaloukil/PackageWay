@@ -68,9 +68,6 @@ class Editor extends React.Component {
         //verify parcel informations 
         ev.preventDefault();
         
-          
-          
-
       agent.Parcels.create({
         title: this.props.title,
         body: this.props.body,

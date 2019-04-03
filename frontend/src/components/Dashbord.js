@@ -1,5 +1,6 @@
 import ParcelList from './ParcelList';
 import React from 'react';
+import Header from './Header';
 import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
@@ -24,6 +25,7 @@ const mapStateToProps = state => ({
   parcels : state.parcelList.parcels,
   currentUser: state.common.currentUser,
   dashbord: state.dashbord,
+  common : state.common.appName
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -57,7 +59,7 @@ class Dashbord extends React.Component {
   render() {
     return (
       <div className="profile-page">
-
+      <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="user-info">
           <div className="container">
             <div className="row">

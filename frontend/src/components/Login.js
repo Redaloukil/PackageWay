@@ -10,6 +10,7 @@ import {
 } from '../constants/actionTypes';
 import './../styles/login.css';
 import Header from './Header';
+import '../styles/login.css';
 
 const mapStateToProps = state => ({ 
   ...state.auth,

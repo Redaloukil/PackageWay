@@ -1,6 +1,5 @@
 import Banner from './Banner';
 import React from 'react';
-import agent from '../../agent';
 import { connect } from 'react-redux';
 import '../../styles/home.css';
 import parcelImage from'../../images/parcel.png'
@@ -40,21 +39,42 @@ class Home extends React.Component {
         <header id="header">
         
           <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-          <div className="container-fluid">
-            <div className="row">
-              <div id="header-desc" className="col-sm-7 col-sm-offset-2">
+          <div className="container">
+              <div id="header-desc">
                 <h1>Your Parcel will be right in way.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
               </div>
-              <div id=""className="col-sm-3">
-                <img id="parcel-image" src={parcelImage} width="500px"/>
+              
+            
+          </div>
+          <div id="header-tuto" className="container">
+            <div className="row">
+              <div className="col-sm-4">
+                <div className="step">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <p>get your bag</p>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="step">
+                <i class="fa fa-truck" aria-hidden="true"></i>  
+                <p>get your bag</p>
+                  
+
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="step">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <p>get your bag</p>
+                </div>
               </div>
             </div>
           </div>
           
+          
         </header>
-        {// <Banner token={this.props.token} appName={this.props.appName} />
-    }
+     
         <section id="desc">
         <div className="container">
         <div className="row">
@@ -69,20 +89,13 @@ class Home extends React.Component {
           <h2>The Fastest Way To Transport Your Parcel.</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
           <h2>The Fastest Way To Transport Your Parcel.</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+          <p>nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
         </div>
         </div>
         </div>
           
         </section>
-        <footer>
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-4">
-              </div>
-            </div>
-          </div>
-        </footer>
+        
       </div>
     );
   }

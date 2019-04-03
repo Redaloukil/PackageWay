@@ -31,8 +31,8 @@ const Auth = {
     requests.get('user/'),
   login: (username, password) =>
     requests.post('login/', {username, password }),
-  register: (username,firstName , lastName , password , userType) =>
-    requests.post('signup/', { username, firstName , lastName ,  password , userType}),
+  register: (username,firstName , lastName , password) =>
+    requests.post('users/', { username, first_name : firstName , last_name:lastName ,  password}),
   save: user =>
     requests.put('user', { user }),
   logout: () => 
@@ -42,7 +42,7 @@ const Auth = {
 const Parcels = {
   all: () =>
     requests.get(`parcels/`),
-  perUser:(id) => 
+  perUser:() => 
     requests.get(`parcels/users/`)  ,
   del: id =>
     requests.del(`parcels/${id}`),

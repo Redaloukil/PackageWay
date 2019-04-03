@@ -1,5 +1,5 @@
 .navbar-light .navbar-nav .nav-link {
-    color: #333;
+    color: #333 !important;
     font-size:20px;
 }
 
@@ -9,5 +9,5 @@
     font-size: 2rem;
     padding-top: 0rem;
     margin-right: 2rem;
-    color: #333;
+    color: #333 !important;
 }
