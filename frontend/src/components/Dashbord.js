@@ -1,4 +1,4 @@
-import ParcelList from './ParcelList';
+import PackageList from './PackageList';
 import React from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ const EditProfileSettings = props => {
   return null;
 };
 const mapStateToProps = state => ({
-  parcels : state.parcelList.parcels,
+  packages : state.packageList.packages,
   currentUser: state.common.currentUser,
   dashbord: state.dashbord,
   common : state.common.appName
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
 
 class Dashbord extends React.Component {
   componentWillMount() {
-    this.props.onLoad(agent.Parcels.perUser());
+    this.props.onLoad(agent.Packages.perUser());
   }
 
   componentWillUnmount() {
@@ -49,10 +49,10 @@ class Dashbord extends React.Component {
           <Link
             className="nav-link active"
             to="">
-            My parcels
+            My packages
           </Link>
         </li>
-    </ul>
+      </ul>
     );
   }
 
@@ -87,7 +87,7 @@ class Dashbord extends React.Component {
               </div>
               <br/>
               <div>
-                <ParcelList parcels={this.props.parcels}/>
+                <PackageList packages={this.props.packages}/>
               </div>
               
                 

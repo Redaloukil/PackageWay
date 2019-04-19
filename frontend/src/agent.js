@@ -28,37 +28,36 @@ const requests = {
 
 const Auth = {
   current: () =>
-    requests.get('user/'),
+    requests.get('users/user/'),
   login: (username, password) =>
-    requests.post('login/', {username, password }),
+    requests.post('users/login/', {username, password }),
   register: (username,firstName , lastName , password) =>
     requests.post('users/', { username, first_name : firstName , last_name:lastName ,  password}),
   save: user =>
-    requests.put('user', { user }),
+    requests.put('users/user', { user }),
   logout: () => 
     requests.get('logout/'),
 };
 
-const Parcels = {
+const Packages = {
   all: () =>
-    requests.get(`parcels/`),
+    requests.get(`packages/`),
   perUser:() => 
-    requests.get(`parcels/users/`)  ,
+    requests.get(`packages/user/`)  ,
   del: id =>
-    requests.del(`parcels/${id}`),
+    requests.del(`packages/${id}`),
   byId: id =>
-    requests.get(`parcels/${id}`),
+    requests.get(`packages/${id}`),
   update: (id , title , body , longitude , largitude) =>
-    requests.put(`parcels/${id}`, {title , body , longitude , largitude}),
+    requests.put(`packages/${id}`, {title , body , longitude , largitude}),
   create: (title , body , longitude , largitude ) =>
-    requests.post('parcels/', { title , body , longitude , largitude })
-
+    requests.post('packages/', { title , body , longitude , largitude })
 };
 
 
 
 export default {
-  Parcels,
+  Packages,
   Auth,
   setToken: _token => { token = _token; }
 };

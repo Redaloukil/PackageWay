@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
 from backend.users.models import User , Profile
 from backend.users.serializers import (
     UserSerializer ,
@@ -33,7 +33,7 @@ class LoginView(APIView):
 
 # logout
 class LogoutView(APIView):
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     @staticmethod
     def get(request):
@@ -47,6 +47,7 @@ class LogoutView(APIView):
 
 # users
 class UserView(APIView):
+    permission_classes = (IsAuthenticated,)    
     @staticmethod
     def get(request):
         """
@@ -74,6 +75,7 @@ class UserView(APIView):
 
 # users/{id}
 class UserDetail(APIView):
+    permission_classes = (IsAuthenticated,)    
     @staticmethod
     def get(request, id):
         """
@@ -113,6 +115,7 @@ class UserDetail(APIView):
 
 
 class GetCurrentUser(APIView):
+    permission_classes = (IsAuthenticated,)    
     @staticmethod
     def get(request):
         user = User.objects.get(id = request.user.id)

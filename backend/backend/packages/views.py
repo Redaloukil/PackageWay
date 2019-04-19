@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from backend.packages.models import Package
 from backend.packages.serializers import (
@@ -32,6 +33,7 @@ class PackageView(APIView):
 
 
 class PackageDetail(APIView):
+    permission_classes = (IsAuthenticated,)    
     @staticmethod
     def get(request, id):
         """
@@ -67,14 +69,14 @@ class PackageDetail(APIView):
 
 
 class PackagesCurrentUserView(APIView):
+       
     @staticmethod
     def get(request):
         """
         View individual post
         """
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             packages = Package.objects.filter(user=request.user)
-            
             return Response(data=ParcelSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
         return Response({'authentification':'you are authenticated'})
 
@@ -84,7 +86,7 @@ class PackageRecoveredByDelivery(APIView):
         """
         Delivery Man gets the parcel by id
         """
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             if request.user.user_type == "1":
                 package = get_object_or_404(Package , id=id)
                 package.recovered = True

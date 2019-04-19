@@ -8,7 +8,7 @@ export default (state = {}, action) => {
     case PARCEL_PAGE_LOADED:
       return {
         ...state,
-        parcels: action.payload,
+        packages: action.payload,
       };
     case PARCEL_PAGE_UNLOADED:
       return {};
