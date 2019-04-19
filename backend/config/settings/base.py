@@ -65,14 +65,14 @@ DJANGO_APPS = [
     "django.contrib.admin",
 ]
 THIRD_PARTY_APPS = [
-    "crispy_forms",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
     "rest_framework",
+    'rest_framework.authtoken'
 ]
 LOCAL_APPS = [
     "backend.users.apps.UsersAppConfig",
+    "backend.packages.apps.PackagesAppConfig",
+    "backend.general.apps.GeneralAppConfig",
+    
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -191,6 +191,15 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#fixture-dirs
 FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+    
+}
 
 # SECURITY
 # ------------------------------------------------------------------------------

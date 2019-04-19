@@ -1,10 +1,9 @@
 import uuid
 from django.contrib.auth.models import AbstractUser , PermissionsMixin
-from django.db.models import CharField
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
-
+from backend.users.managers import UserManager
 
 USER_TYPE = (
     ("0" , "client"),
@@ -12,18 +11,21 @@ USER_TYPE = (
 )
 
 class User(AbstractUser):
-    username = CharField(_("Name of User"), blank=True, max_length=255 , unique=True)
+    username = models.CharField(_("Name of User"), blank=True, max_length=255 , unique=True)
     first_name = models.CharField(max_length=255 , blank=False)
     last_name = models.CharField(max_length=255 , blank=False)
     user_type = models.CharField( choices=USER_TYPE ,max_length=10 ,default="0")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     
+    objects = UserManager()
     
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
 
     USERNAME_FIELD = 'username'
+
+    REQUIRED_FIELDS = ['first_name' , 'last_name',]
 
     class Meta:
         app_label = 'users'

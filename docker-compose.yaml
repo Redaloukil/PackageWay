@@ -9,7 +9,7 @@ services:
   frontend:
     build:
       context: ./frontend/
-      dockerfile: ./compose/local/frontend/Dockerfile
+      dockerfile: ./compose/Dockerfile
     volumes:
     - ./frontend/:/app
     ports:
@@ -18,7 +18,7 @@ services:
   django: &django
     build:
       context: ./backend/
-      dockerfile: ./compose/local/django/Dockerfile
+      dockerfile: ./compose/Dockerfile
     depends_on:
       - postgres
     volumes:

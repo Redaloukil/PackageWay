@@ -1,14 +1,18 @@
 from django.urls import path
 
-# from backend.users.views import (
-    
-# )
+from backend.users.views import (
+    LoginView,
+    LogoutView,
+    UserView,
+    UserDetail,
+    GetCurrentUser,   
+)
 
 app_name = "users"
 
 urlpatterns = [
-    # path("", view=user_list_view, name=""),
-    # path("register/", view=user_list_view, name="register"),
-    # path("login/", view=user_list_view, name="login"),
-    # path("<int:pk>/", view=user_detail_view, name="detail"),
+    path("login/", view=LoginView.as_view(), name="login"),
+    path("logout/", view=LogoutView.as_view(), name="logout"),
+    path("", view=UserView.as_view(), name=""),
+    path("<int:id>/", view=UserDetail.as_view(), name="detail"),
 ]
