@@ -3,8 +3,6 @@ import {
   EDITOR_PAGE_UNLOADED,
   PARCEL_SUBMITTED,
   ASYNC_START,
-  ADD_TAG,
-  REMOVE_TAG,
   UPDATE_FIELD_EDITOR,
 } from '../constants/actionTypes';
 import { KEY } from '../constants/mapKey';
@@ -14,11 +12,13 @@ export default (state = {}, action) => {
     case EDITOR_PAGE_LOADED:
       return {
         ...state,
-        title: action.payload ? action.payload.parcel.title : '',
-        body: action.payload ? action.payload.parcel.body : '',
+        content: action.payload ? action.payload.parcel.content : '',
+        contentType: action.payload ? action.payload.parcel.contentType : '',
         longitude : action.payload ? action.payload.parcel.longitude : '',
         latitude : action.payload ? action.payload.parcel.latitude : '',
-        mapKey : action.payload ? KEY : KEY,  
+        fromWilaya : action.payload ? action.payload.parcel.fromWilaya : '',
+        from : action.payload ? action.payload.parcel.from : '',
+        to : action.payload ? action.payload.parcel.to : '',
       };
     case EDITOR_PAGE_UNLOADED:
       return {};

@@ -54,8 +54,8 @@ const Packages = {
     requests.get(`packages/${id}`),
   update: (id , title , body , longitude , largitude) =>
     requests.put(`packages/${id}`, {title , body , longitude , largitude}),
-  create: (title , body , longitude , largitude ) =>
-    requests.post('packages/', { title , body , longitude , largitude })
+  create: () =>
+    requests.post(`packages/`, { content : "reda" , content_type :"1"  , from_wilaya :"Oran"  })
 };
 
 

@@ -13,7 +13,6 @@ class SettingsForm extends React.Component {
     super();
 
     this.state = {
-     
       firstName:'',
       lastName:'',
     };
@@ -27,13 +26,8 @@ class SettingsForm extends React.Component {
 
     this.submitForm = ev => {
       ev.preventDefault();
-      
-      this.props.onSubmitForm(
-        { 
-          firstName : this.state.firstName, 
-          lastName : this.state.lastName,
-        }
-      );
+      console.log(this.state)
+      this.props.onSubmitForm(this.state.firstName ,this.state.lastName);
     };
   }
 
@@ -74,6 +68,11 @@ class SettingsForm extends React.Component {
               value={this.state.lastName}
               onChange={this.updateState('lastName')} />
           </fieldset>
+          <button
+                className="btn"
+                type="submit">
+                Update Profile Details
+              </button>
         </fieldset>
       </form>
     );
@@ -89,7 +88,7 @@ const mapDispatchToProps = dispatch => ({
   onClickLogout: () => 
       dispatch({ type: LOGOUT }),
   onSubmitForm: (firstName , lastName) =>
-      dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save( firstName , lastName )}),
+      dispatch({ type: SETTINGS_SAVED, payload:agent.Auth.save( firstName , lastName )}),
   onUnload: () => 
       dispatch({type: SETTINGS_PAGE_UNLOADED}),
 });
@@ -109,16 +108,7 @@ class Settings extends React.Component {
               <SettingsForm
                 currentUser={this.props.currentUser}
                 onSubmitForm={this.props.onSubmitForm} />
-
-              <hr />
-
-              <button
-                className="btn btn-outline-danger"
-                onClick={this.props.onSubmit}>
-                Update Profile Details
-              </button>
-
-            </div>
+              </div>
           </div>
         </div>
       </div>

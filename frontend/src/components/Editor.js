@@ -32,6 +32,10 @@ class Editor extends React.Component {
     super();
 
     this.state = {
+      map : {
+        latitude:-74.50,
+        longitude :40,
+      },
       errors : {
         content : "" ,
         content_type:"", 
@@ -47,7 +51,7 @@ class Editor extends React.Component {
       this.changeContent = updateFieldEvent('content');
       this.changeContentType = updateFieldEvent('contentType');
       this.changeLongitude = updateFieldEvent('longitude');
-      this.changeLargitude = updateFieldEvent('latitude');
+      this.changeLatitude = updateFieldEvent('latitude');
       this.changeFrom = updateFieldEvent('from');
       this.changeTo = updateFieldEvent('to')
       
@@ -68,17 +72,14 @@ class Editor extends React.Component {
         //verify parcel informations 
         ev.preventDefault();
         
-      agent.Parcels.create({
-        content: this.props.content,
-        contentType: this.props.contentType,
-        latitude:this.props.latitude,
-        longitude:this.props.longitude,
-        from:this.props.from,
-        to:this.props.to,
-      });
-
+      agent.Packages.create(
+      //   this.props.content,
+      //   '0',
+      //   "Oran"
+      // 
+    );
       this.props.onSubmit();
-      };
+    };
   }
   
   componentWillMount() {
@@ -92,7 +93,9 @@ class Editor extends React.Component {
   componentDidMount(){
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
+      style: 'mapbox://styles/mapbox/streets-v11',
+      zoom: 9 ,
+      center: [this.state.map.latitude , this.state.map.longitude]
     });
   }
   
@@ -152,25 +155,33 @@ class Editor extends React.Component {
                     </div>
                   </fieldset>
                   <fieldset className="form-group">
-                  <label for="exampleInputEmail1"><strong>Package location latitude</strong></label>
+                  <label for="exampleInputEmail1"><strong>Package Geolocation</strong></label>
+                  <div className="row">
+                    <div className="col-sm-6">
                     <input
                     className="form-control form-control-lg"
                     type="text"
                     placeholder="Set the longitude"
                     value={this.props.latitude}
                     onChange={this.changeLatitude} />
-                  </fieldset>
-                  { this.state.errors.latitude ? <ErrorField text={this.state.errors.latitude}/> : null}
-                  <fieldset className="form-group">
-                  <label for="exampleInputEmail1"><strong>Package location longitude</strong></label>
+                    { this.state.errors.latitude ? <ErrorField text={this.state.errors.latitude}/> : null}
+                    </div>
+                    <div className="col-sm-6">
                     <input
                     className="form-control form-control-lg"
                     type="text"
                     placeholder="Set the longitude"
                     value={this.props.longitude}
                     onChange={this.changeLongitude} />
-                  </fieldset>
+                  
                   { this.state.errors.longitude ? <ErrorField text={this.state.errors.longitude}/> : null}
+                    </div>
+                  </div>
+                    
+                  </fieldset>
+                  
+                 
+                    
                   <fieldset className="form-group">
                   <label for="exampleInputEmail1"><strong>From Address</strong></label>
                     <input
