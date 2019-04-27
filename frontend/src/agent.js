@@ -33,8 +33,8 @@ const Auth = {
     requests.post('users/login/', {username, password }),
   register: (username,firstName , lastName , password) =>
     requests.post('users/', { username, first_name : firstName , last_name:lastName ,  password}),
-  save: user =>
-    requests.put('users/user', { user }),
+  save: (firstName , lastName) =>
+    requests.put('users/user', { first_name : firstName , last_name:lastName }),
   logout: () => 
     requests.get('logout/'),
 };

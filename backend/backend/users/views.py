@@ -86,11 +86,10 @@ class UserDetail(APIView):
         return Response(UserSerializer(user).data)
 
     @staticmethod
-    def patch(request, id):
+    def put(request, id):
         """
         Update authenticated user
         """
-
         user = get_object_or_404(User, pk=id)
         if user != request.user:
             return Response(status=status.HTTP_401_UNAUTHORIZED)

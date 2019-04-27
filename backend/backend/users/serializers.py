@@ -29,8 +29,6 @@ class UserSerializer(serializers.ModelSerializer):
 class UserSerializerCreate(serializers.ModelSerializer):
     token = serializers.SerializerMethodField()
 
-    
-        
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'password' , 'token')
@@ -68,7 +66,7 @@ class UserSerializerLogin(UserSerializer):
 
     class Meta:
         model = User
-        fields = ( 'username', 'first_name', 'last_name', 'token')
+        fields = ( 'id' ,'username', 'first_name', 'last_name', 'token')
 
 
 class UserSerializerUpdate(serializers.ModelSerializer):

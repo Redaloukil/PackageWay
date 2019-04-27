@@ -26,7 +26,7 @@ class SettingsForm extends React.Component {
 
     this.submitForm = ev => {
       ev.preventDefault();
-      console.log(this.state)
+      
       this.props.onSubmitForm(this.state.firstName ,this.state.lastName);
     };
   }
@@ -50,7 +50,9 @@ class SettingsForm extends React.Component {
   }
   render() {
     return (
+      
       <form onSubmit={this.submitForm}>
+        {console.log("state is" , this.state)}
         <fieldset>
           <fieldset className="form-group">
             <input
@@ -85,8 +87,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickLogout: () => 
-      dispatch({ type: LOGOUT }),
   onSubmitForm: (firstName , lastName) =>
       dispatch({ type: SETTINGS_SAVED, payload:agent.Auth.save( firstName , lastName )}),
   onUnload: () => 
