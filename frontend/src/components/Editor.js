@@ -2,6 +2,8 @@ import ErrorField from './ErrorField';
 import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
+import Header from './Header';
+import '../styles/editor.css';
 import {
   EDITOR_PAGE_LOADED,
   PARCEL_SUBMITTED,
@@ -31,8 +33,8 @@ class Editor extends React.Component {
 
     this.state = {
       errors : {
-        title : "",
-        body : "" , 
+        content : "" ,
+        content_type:"", 
         latitude : "" , 
         longitude : "" , 
         from : "" , 
@@ -42,35 +44,33 @@ class Editor extends React.Component {
 
     const updateFieldEvent =
       key => ev => this.props.onUpdateField(key, ev.target.value);
-      this.changeTitle = updateFieldEvent('title');
-      this.changeBody = updateFieldEvent('body');
+      this.changeContent = updateFieldEvent('content');
+      this.changeContentType = updateFieldEvent('contentType');
       this.changeLongitude = updateFieldEvent('longitude');
       this.changeLargitude = updateFieldEvent('latitude');
       this.changeFrom = updateFieldEvent('from');
       this.changeTo = updateFieldEvent('to')
-
-      this.mapKey = "pk.eyJ1IjoicmVkYWEiLCJhIjoiY2p0cHIzaW5wMDdpejQzbTI2NGpnM215ciJ9.7BluMTtZtz62qn_SREi8ig";
+      
       this.getCurrentGeolocation = () => {
         navigator.geolocation.getCurrentPosition( ev => {
           this.props.onUpdateField('latitude', ev.coords.latitude)
           this.props.onUpdateField('longitude', ev.coords.longitude)
         })
       }
-
+      this.mapKey = "pk.eyJ1IjoicmVkYWEiLCJhIjoiY2p0cHIzaW5wMDdpejQzbTI2NGpnM215ciJ9.7BluMTtZtz62qn_SREi8ig";
       this.displayMap = () => {
           this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11'
           });
-          
       }
       this.submitForm = ev => {
         //verify parcel informations 
         ev.preventDefault();
         
       agent.Parcels.create({
-        title: this.props.title,
-        body: this.props.body,
+        content: this.props.content,
+        contentType: this.props.contentType,
         latitude:this.props.latitude,
         longitude:this.props.longitude,
         from:this.props.from,
@@ -93,7 +93,7 @@ class Editor extends React.Component {
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11'
-      });
+    });
   }
   
   
@@ -103,50 +103,68 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <div className="editor-page">
-        <div className="container page">
-          <div className="row">
-            <div className="col-md-4 col-xs-12">
+      <div className="wrapper editor-page">
+      
+        <div className="container-fluid page">
+            <div id="map-container">
               <div id="map">
                 
               </div>
             </div>
-            <div className="col-md-8 col-xs-12">
+          </div>
+          <div className="container">
+            <div className="row">
+            <div className="col-md-12">
+              <h2 className="h3">Package details Form</h2>
+              <p>Please provide all details about the package you want to submit</p>
+              <hr/>
               <form>
                 <fieldset>
                   <fieldset className="form-group">
+                  <label for="exampleInputEmail1"><strong>Package Content</strong></label>
                     <input
                       className="form-control form-control-lg"
                       type="text"
-                      placeholder="Article Title"
-                      value={this.props.title}
-                      onChange={this.changeTitle} />
+                      placeholder="Describe package content(food , clothes..)"
+                      value={this.props.content}
+                      onChange={this.changeContent} />
                   </fieldset>
-                  { this.state.errors.title ? <ErrorField text={this.state.errors.title}/> : null}
-                  <fieldset className="form-group">
-                    <textarea
-                      className="form-control"
-                      rows="8"
-                      placeholder="Write your article (in markdown)"
-                      value={this.props.body}
-                      onChange={this.changeBody}>
-                    </textarea>
+                  { this.state.errors.content ? <ErrorField text={this.state.errors.content}/> : null}
+                  <fieldset>
+                  <label for="exampleInputEmail1"><strong>Content Type</strong></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Food
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"/>
+                        <label class="form-check-label" for="exampleRadios2">
+                          Clothes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"/>
+                        <label class="form-check-label" for="exampleRadios3">
+                          Other
+                        </label>
+                    </div>
                   </fieldset>
-                  { this.state.errors.body ? <ErrorField text={this.state.errors.body}/> : null}
-
                   <fieldset className="form-group">
+                  <label for="exampleInputEmail1"><strong>Package location latitude</strong></label>
                     <input
-                    className="form-control"
+                    className="form-control form-control-lg"
                     type="text"
-                    placeholder="Set the latitude"
+                    placeholder="Set the longitude"
                     value={this.props.latitude}
                     onChange={this.changeLatitude} />
                   </fieldset>
                   { this.state.errors.latitude ? <ErrorField text={this.state.errors.latitude}/> : null}
-                  
                   <fieldset className="form-group">
+                  <label for="exampleInputEmail1"><strong>Package location longitude</strong></label>
                     <input
-                    className="form-control"
+                    className="form-control form-control-lg"
                     type="text"
                     placeholder="Set the longitude"
                     value={this.props.longitude}
@@ -154,19 +172,21 @@ class Editor extends React.Component {
                   </fieldset>
                   { this.state.errors.longitude ? <ErrorField text={this.state.errors.longitude}/> : null}
                   <fieldset className="form-group">
+                  <label for="exampleInputEmail1"><strong>From Address</strong></label>
                     <input
-                    className="form-control"
+                    className="form-control form-control-lg"
                     type="text"
-                    placeholder="Location Address"
+                    placeholder="Please Enter Package Location Address"
                     value={this.props.from}
                     onChange={this.changeFrom} />
                   </fieldset>
                   { this.state.errors.from ? <ErrorField text={this.props.from}/> : null}
                   <fieldset className="form-group">
+                  <label for="exampleInputEmail1"><strong>Destination address</strong></label>
                     <input
-                    className="form-control"
+                    className="form-control form-control-lg"
                     type="text"
-                    placeholder="Destination Address"
+                    placeholder="Please Enter Package Destination Address"
                     value={this.props.to}
                     onChange={this.changeTo} />
                   </fieldset>
@@ -192,9 +212,12 @@ class Editor extends React.Component {
               </form>
 
             </div>
+            </div>
           </div>
-        </div>
-      </div>
+            
+          </div>
+      
+      
     );
   }
 }

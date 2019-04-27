@@ -53,6 +53,7 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
+        <Header appName={this.props.appName} currentUser={this.props.currentUser} />
           <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login/" component={Login} />

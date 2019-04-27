@@ -1,0 +1,9 @@
+.mapboxgl-canvas {
+    position: relative !important;
+    height:300px !important;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}

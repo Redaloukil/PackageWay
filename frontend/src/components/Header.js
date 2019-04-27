@@ -8,7 +8,6 @@ const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -75,6 +74,12 @@ const LoggedInView = props => {
   return null;
 };
 
+const mapStateToProps = state => {
+  return {
+    appName: state.common.appName,
+    currentUser: state.common.currentUser,
+  }};
+
 const mapDispatchToProps = ( dispatch ) => ({
   logout : () => {dispatch({ type : LOGOUT})}
 })
@@ -89,20 +94,20 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-light">
+      <nav className="navbar navbar-light navbar-fixed-top">
         <div className="container">
 
           <a className="navbar-brand">
             {this.props.appName}
           </a>
 
-          <LoggedOutView currentUser={this.props.currentUser} />
+          <LoggedOutView currentUser={this.props.currentUser}/>
 
-          <LoggedInView logout={this.logout} currentUser={this.props.currentUser} />
+          <LoggedInView logout={this.logout} currentUser={this.props.currentUser}/>
         </div>
       </nav>
     );
   }
 }
 
-export default connect(() => {} , mapDispatchToProps)(Header);
+export default connect(mapStateToProps , mapDispatchToProps)(Header);

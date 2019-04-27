@@ -38,7 +38,7 @@ class Home extends React.Component {
       <div className="home-page">
         <header id="header">
         
-          <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+          
           <div className="container">
               <div id="header-desc">
                 <h1>Your Parcel will be right in way.</h1>

@@ -1,8 +1,11 @@
-import PackageList from './PackageList';
 import React from 'react';
 import Header from './Header';
-import { Link } from 'react-router-dom';
+import { Link  , Route , Switch} from 'react-router-dom';
 import agent from '../agent';
+import PackagesList from './Packages/PackagesList';
+import NotRecovered from './Packages/NotRecovered';
+import Recovered from './Packages/Recovered';
+
 import { connect } from 'react-redux';
 import {
   DASHBORD_PAGE_LOADED,
@@ -48,8 +51,18 @@ class Dashbord extends React.Component {
         <li className="nav-item">
           <Link
             className="nav-link active"
-            to="">
+            to="/dashbord/">
             My packages
+          </Link>
+          <Link
+            className="nav-link"
+            to="/dashbord/notrecovered/">
+            Not Recovered
+          </Link>
+          <Link
+            className="nav-link"
+            to="/dashbord/recovered/">
+            Recovered
           </Link>
         </li>
       </ul>
@@ -58,7 +71,7 @@ class Dashbord extends React.Component {
 
   render() {
     return (
-      <div className="profile-page">
+      <div className="wrapper profile-page">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="user-info">
           <div className="container">
@@ -86,9 +99,13 @@ class Dashbord extends React.Component {
                 {this.renderTabs()}
               </div>
               <br/>
-              <div>
-                <PackageList packages={this.props.packages}/>
-              </div>
+
+              
+              <Switch>
+                <Route exact path="/dashbord/" component={PackagesList}/>
+                <Route path="/dashbord/notrecovered/" component={NotRecovered} />
+                <Route path="/dashbord/recovered/" component={Recovered}/>
+              </Switch>
               
                 
             </div>

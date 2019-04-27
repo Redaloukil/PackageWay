@@ -48,7 +48,7 @@ class Login extends React.Component {
     const username = this.props.username;
     const password = this.props.password;
     return (
-      <div className="auth-page">
+      <div className="wrapper auth-page">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="container page">
           <div className="row">

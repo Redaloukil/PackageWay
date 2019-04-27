@@ -77,7 +77,31 @@ class PackagesCurrentUserView(APIView):
         """
         if request.user.is_authenticated:
             packages = Package.objects.filter(user=request.user)
-            return Response(data=ParcelSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
+            return Response(data=PackageSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
+        return Response({'authentification':'you are authenticated'})
+
+
+class PackagesNotRecoveredCurrentUserView(APIView):
+    @staticmethod
+    def get(request):
+        """
+        View individual post
+        """
+        if request.user.is_authenticated:
+            packages = Package.objects.filter(user=request.user ,recovered=False)
+            return Response(data=PackageSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
+        return Response({'authentification':'you are authenticated'})
+
+
+class PackagesRecoveredCurrentUserView(APIView):
+    @staticmethod
+    def get(request):
+        """
+        View individual post
+        """
+        if request.user.is_authenticated:
+            packages = Package.objects.filter(user=request.user , recovered=True)
+            return Response(data=PackageSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
         return Response({'authentification':'you are authenticated'})
 
 class PackageRecoveredByDelivery(APIView):

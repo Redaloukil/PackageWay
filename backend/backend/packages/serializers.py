@@ -8,7 +8,7 @@ class PackageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Package
-        fields = ('id','title' , 'body' , 'longitude' , 'largitude')
+        fields = '__all__'
 
 
 class PackageSerializerCreate(serializers.ModelSerializer):

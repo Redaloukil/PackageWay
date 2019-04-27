@@ -5,6 +5,7 @@ export default (state = {}, action) => {
     case HOME_PAGE_LOADED:
       return {
         ...state,
+        redirectTo: state.common.token ? '/dashbord/' : '/'
         
       };
     case HOME_PAGE_UNLOADED:

@@ -17,17 +17,19 @@ const PackageList = props => {
     );
   }
 
-  // return (
-  //   <div>
-  //     {
-  //       props.packages.map((packages , key) => {
-  //         return (
-  //           <Package packages={packages} key={key}/>
-  //         );
-  //       })
-  //     }
-  //   </div>
-  // );
+  return (
+    
+    <div>
+    {console.log(props.packages)}
+      {
+        props.packages.map((packages , key) => {
+          return (
+            <Package packages={packages} key={key}/>
+          );
+        })
+      }
+    </div>
+  );
 };
 
 export default PackageList;

@@ -45,6 +45,14 @@
 .navbar-light .navbar-nav .nav-link {
     color: #ffffff !important;
     font-size:20px;
+    display: inline-block !important;
+}
+
+.nav-pills.outline-active .nav-link.active {
+    display: inline-block !important;
+}
+.nav-pills.outline-active .nav-link {
+    display: inline-block !important;
 }
 
 .navbar-brand {

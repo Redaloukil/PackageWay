@@ -1,9 +1,41 @@
 .btn-primary {
-    background-color: #1abc9c !important;
-    border-color: #1abc9c !important;
+    background-color: #3498db !important;
+    border-color: #3498db !important;
+    margin:1% !important;
 }
 
 a {
     color: #1abc9c !important;
     text-decoration: none;
 }
+
+nav navbar-nav pull-xs-right {
+
+}
+
+.navbar-light .navbar-brand {
+    color: white !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color:white !important;
+}
+
+.navbar {
+    background-color: #3498db;
+    padding:1.20rem;
+}
+
+.wrapper {
+    padding-top:8vh;
+}
+
+.nav-pills.outline-active .nav-link.active {
+    color: #3498db !important;
+    border-bottom: 2px solid #3498db!important
+}
+
+a {
+    color: #3498db !important;
+}
+

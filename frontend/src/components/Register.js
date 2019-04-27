@@ -58,8 +58,8 @@ class Register extends React.Component {
     const userType = this.props.userType;
     
     return (
-      <div className="auth-page">
-      <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+      <div className="wrapper auth-page">
+      
 
         <div className="container page">
           <div className="row">

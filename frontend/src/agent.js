@@ -44,6 +44,10 @@ const Packages = {
     requests.get(`packages/`),
   perUser:() => 
     requests.get(`packages/user/`)  ,
+  perUserRecovered: () =>
+    requests.get(`packages/user/recovered/`),
+  perUserNotRecovered: () =>
+    requests.get(`packages/user/notrecovered/`),
   del: id =>
     requests.del(`packages/${id}`),
   byId: id =>

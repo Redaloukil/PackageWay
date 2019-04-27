@@ -33,7 +33,7 @@ class LoginView(APIView):
 
 # logout
 class LogoutView(APIView):
-    permission_classes = (IsAuthenticated,)
+    
 
     @staticmethod
     def get(request):
@@ -47,7 +47,7 @@ class LogoutView(APIView):
 
 # users
 class UserView(APIView):
-    permission_classes = (IsAuthenticated,)    
+       
     @staticmethod
     def get(request):
         """
@@ -75,7 +75,7 @@ class UserView(APIView):
 
 # users/{id}
 class UserDetail(APIView):
-    permission_classes = (IsAuthenticated,)    
+        
     @staticmethod
     def get(request, id):
         """
