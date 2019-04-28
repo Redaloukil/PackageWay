@@ -26,9 +26,10 @@ nav navbar-nav pull-xs-right {
     padding:1.20rem;
 }
 
-.wrapper {
+
+/* .wrapper {
     padding-top:8vh;
-}
+} */
 
 .nav-pills.outline-active .nav-link.active {
     color: #3498db !important;

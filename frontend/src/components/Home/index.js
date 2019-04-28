@@ -36,66 +36,74 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <header id="header">
-        
-          
-          <div className="container">
-              <div id="header-desc">
-                <h1>Your Parcel will be right in way.</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+      <section id="slider" class="bd-example">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://via.placeholder.com/1000x300" class="d-block w-100" width="100%" height="300px" alt="..."/>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
-              
-            
-          </div>
-          <div id="header-tuto" className="container">
-            <div className="row">
-              <div className="col-sm-4">
-                <div className="step">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>
-                  <p>get your bag</p>
-                </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://via.placeholder.com/1000x300" class="d-block w-100" width="100%" height="300px" alt="..."/>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
-              <div className="col-sm-4">
-                <div className="step">
-                <i class="fa fa-truck" aria-hidden="true"></i>  
-                <p>get your bag</p>
-                  
-
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div className="step">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <p>get your bag</p>
-                </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://via.placeholder.com/1000x300" class="d-block w-100" width="100%" height="300px" alt="..."/>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
               </div>
             </div>
           </div>
-          
-          
-        </header>
-     
-        <section id="desc">
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+      <section id="ourstory">
         <div className="container">
+        <h1 className="text-center">Our Story</h1>
         <div className="row">
-            
-        <div className="col-sm-4">
-          <img width="100%" height="700px" src={phoneImage}/>
-        </div>
-        <div className="col-sm-7">
-          <h1>Our Transport Area Is Growing Up</h1>
-          <h2>The Fastest Way To Transport Your Parcel.</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-          <h2>The Fastest Way To Transport Your Parcel.</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-          <h2>The Fastest Way To Transport Your Parcel.</h2>
-          <p>nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
+          <div className="col-sm-7">
+            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment</p>
+          </div>
+          <div className="col-sm-5">
+            <img src="https://via.placeholder.com/1000x400" width="100%"/>
+          </div>
         </div>
         </div>
+      </section>
+      <section id="ourcauses">
+        <div className="container">
+        <h1 className="text-center">Our Causes</h1>
+        <div className="row">
+          <div className="col-sm-4">
+          </div>
+          <div className="col-sm-4">
+          </div>
+          <div className="col-sm-4">
+          </div>
         </div>
+        </div>
+      </section>
           
-        </section>
-        
+          
       </div>
     );
   }

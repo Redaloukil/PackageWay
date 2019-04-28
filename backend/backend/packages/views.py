@@ -37,7 +37,7 @@ class PackageDetail(APIView):
     @staticmethod
     def get(request, id):
         """
-        View individual post
+        View Individual Package Details
         """
 
         post = get_object_or_404(Package, id=id)
@@ -46,7 +46,7 @@ class PackageDetail(APIView):
     @staticmethod
     def patch(request, id):
         """
-        Update post
+        Update Individual Package Details
         """
 
         post = get_object_or_404(Package, id=id)
@@ -58,7 +58,7 @@ class PackageDetail(APIView):
     @staticmethod
     def delete(request, id):
         """
-        Delete post
+        Delete Individual Package Details
         """
 
         parcel = get_object_or_404(Package, pk=id)
@@ -73,7 +73,7 @@ class PackagesCurrentUserView(APIView):
     @staticmethod
     def get(request):
         """
-        View individual post
+        View All Packages By Current User
         """
         if request.user.is_authenticated:
             packages = Package.objects.filter(user=request.user)
@@ -85,7 +85,7 @@ class PackagesNotRecoveredCurrentUserView(APIView):
     @staticmethod
     def get(request):
         """
-        View individual post
+        View Recovered Packages By Current User
         """
         if request.user.is_authenticated:
             packages = Package.objects.filter(user=request.user ,recovered=False)
@@ -97,7 +97,7 @@ class PackagesRecoveredCurrentUserView(APIView):
     @staticmethod
     def get(request):
         """
-        View individual post
+        View Not Yet Recovered Packages By Current User
         """
         if request.user.is_authenticated:
             packages = Package.objects.filter(user=request.user , recovered=True)
@@ -108,7 +108,7 @@ class PackageRecoveredByDelivery(APIView):
     @staticmethod
     def post(request , id):
         """
-        Delivery Man gets the parcel by id
+        Delivery Man Gets The Package By Id
         """
         if request.user.is_authenticated:
             if request.user.user_type == "1":
@@ -118,3 +118,6 @@ class PackageRecoveredByDelivery(APIView):
                 return Response(data=PackageView(parcel).data,status=status.HTTP_202_ACCEPTED)
             return Response({'authentification':'you are not authenticated'} , status=status.HTTP_401_UNAUTHORIZED)
         return Response({'authentification':'you are not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+

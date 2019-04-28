@@ -10,7 +10,7 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl';  
+import MapGL from '@urbica/react-map-gl';
 
 const mapStateToProps = state => ({
   ...state.editor
@@ -32,9 +32,10 @@ class Editor extends React.Component {
     super();
 
     this.state = {
-      map : {
-        latitude:-74.50,
-        longitude :40,
+      viewport: {
+        latitude: 37.78,
+        longitude: -122.41,
+        zoom: 11
       },
       errors : {
         content : "" ,
@@ -46,28 +47,31 @@ class Editor extends React.Component {
       }
     }
 
+    
+
     const updateFieldEvent =
       key => ev => this.props.onUpdateField(key, ev.target.value);
       this.changeContent = updateFieldEvent('content');
       this.changeContentType = updateFieldEvent('contentType');
-      this.changeLongitude = updateFieldEvent('longitude');
-      this.changeLatitude = updateFieldEvent('latitude');
+      this.changeLongitude = () => {
+        updateFieldEvent('longitude');
+      } 
+      this.changeLatitude = () => {
+        
+        updateFieldEvent('latitude')
+      };
       this.changeFrom = updateFieldEvent('from');
       this.changeTo = updateFieldEvent('to')
       
       this.getCurrentGeolocation = () => {
         navigator.geolocation.getCurrentPosition( ev => {
+          this.setState({map : {latitude : ev.coords.latitude , longitude : ev.coords.longitude}})
           this.props.onUpdateField('latitude', ev.coords.latitude)
           this.props.onUpdateField('longitude', ev.coords.longitude)
         })
       }
       this.mapKey = "pk.eyJ1IjoicmVkYWEiLCJhIjoiY2p0cHIzaW5wMDdpejQzbTI2NGpnM215ciJ9.7BluMTtZtz62qn_SREi8ig";
-      this.displayMap = () => {
-          this.map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11'
-          });
-      }
+      
       this.submitForm = ev => {
         //verify parcel informations 
         ev.preventDefault();
@@ -77,28 +81,32 @@ class Editor extends React.Component {
       //   '0',
       //   "Oran"
       // 
-    );
+      );
       this.props.onSubmit();
     };
+    
   }
   
   componentWillMount() {
     if (this.props.match.params.slug) {
       return this.props.onLoad(agent.Parcels.byId(this.props.match.params.id));
     }
-    mapboxgl.accessToken = this.mapKey;
+    // mapboxgl.accessToken = this.mapKey;
     this.props.onLoad(null);
   }
 
   componentDidMount(){
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 9 ,
-      center: [this.state.map.latitude , this.state.map.longitude]
-    });
+    // this.map = new mapboxgl.Map({
+    //   container: 'map',
+    //   style: 'mapbox://styles/mapbox/streets-v11',
+    //   zoom: 9 ,
+    //   center: [this.state.map.latitude , this.state.map.longitude]
+    // });
   }
   
+  componentWillReceiveProps(nextProps){
+    this.forceUpdate();
+  }
   
   componentWillUnmount() {
     this.props.onUnload();
@@ -110,9 +118,16 @@ class Editor extends React.Component {
       
         <div className="container-fluid page">
             <div id="map-container">
-              <div id="map">
-                
-              </div>
+            
+            <MapGL
+                style={{ width: '100%', height: '400px' }}
+                mapStyle= 'mapbox://styles/mapbox/streets-v11'
+                accessToken={this.mapKey}
+                latitude={this.state.viewport.latitude}
+                longitude={this.state.viewport.longitude}
+                zoom={this.state.viewport.zoom}
+                onViewportChange={viewport => this.setState({ viewport })}
+              />;
             </div>
           </div>
           <div className="container">
@@ -125,16 +140,19 @@ class Editor extends React.Component {
                 <fieldset>
                   <fieldset className="form-group">
                   <label for="exampleInputEmail1"><strong>Package Content</strong></label>
+                    <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>  
                     <input
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Describe package content(food , clothes..)"
                       value={this.props.content}
                       onChange={this.changeContent} />
+                      
                   </fieldset>
                   { this.state.errors.content ? <ErrorField text={this.state.errors.content}/> : null}
                   <fieldset>
-                  <label for="exampleInputEmail1"><strong>Content Type</strong></label>
+                    <label for="exampleInputEmail1"><strong>Content Type</strong></label>
+                    <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
                         <label class="form-check-label" for="exampleRadios1">
@@ -155,35 +173,37 @@ class Editor extends React.Component {
                     </div>
                   </fieldset>
                   <fieldset className="form-group">
-                  <label for="exampleInputEmail1"><strong>Package Geolocation</strong></label>
-                  <div className="row">
-                    <div className="col-sm-6">
-                    <input
-                    className="form-control form-control-lg"
-                    type="text"
-                    placeholder="Set the longitude"
-                    value={this.props.latitude}
-                    onChange={this.changeLatitude} />
-                    { this.state.errors.latitude ? <ErrorField text={this.state.errors.latitude}/> : null}
-                    </div>
-                    <div className="col-sm-6">
-                    <input
-                    className="form-control form-control-lg"
-                    type="text"
-                    placeholder="Set the longitude"
-                    value={this.props.longitude}
-                    onChange={this.changeLongitude} />
-                  
-                  { this.state.errors.longitude ? <ErrorField text={this.state.errors.longitude}/> : null}
-                    </div>
-                  </div>
+                    <label for="exampleInputEmail1"><strong>Package Geolocation</strong></label>
+                    <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
+                    <div className="row">
+                      <div className="col-sm-6">
+                      <input
+                      className="form-control form-control-lg"
+                      type="text"
+                      placeholder="Set the longitude"
+                      value={this.state.viewport.latitude}
+                      onChange={this.changeLatitude} />
+                      { this.state.errors.latitude ? <ErrorField text={this.state.errors.latitude}/> : null}
+                      </div>
+                      <div className="col-sm-6">
+                      <input
+                      className="form-control form-control-lg"
+                      type="text"
+                      placeholder="Set the longitude"
+                      value={this.state.viewport.longitude}
+                      onChange={this.changeLongitude} />
                     
+                    { this.state.errors.longitude ? <ErrorField text={this.state.errors.longitude}/> : null}
+                      </div>
+                    </div>
+                      
                   </fieldset>
                   
                  
                     
                   <fieldset className="form-group">
                   <label for="exampleInputEmail1"><strong>From Address</strong></label>
+                  <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
                     <input
                     className="form-control form-control-lg"
                     type="text"
@@ -194,6 +214,7 @@ class Editor extends React.Component {
                   { this.state.errors.from ? <ErrorField text={this.props.from}/> : null}
                   <fieldset className="form-group">
                   <label for="exampleInputEmail1"><strong>Destination address</strong></label>
+                  <small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
                     <input
                     className="form-control form-control-lg"
                     type="text"

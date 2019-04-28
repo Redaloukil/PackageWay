@@ -73,22 +73,7 @@ class Dashbord extends React.Component {
     return (
       <div className="wrapper profile-page">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-        <div className="user-info">
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-12 col-md-10 offset-md-1">
-
-                <h4>{this.props.currentUser.username}</h4>
-                <p>{this.props.currentUser.firstName}</p>
-                <p>{this.props.currentUser.lastName}</p>
-
-                <EditProfileSettings/>
-                
-
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <div className="container">
           <div className="row">

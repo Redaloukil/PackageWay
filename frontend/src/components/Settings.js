@@ -52,7 +52,7 @@ class SettingsForm extends React.Component {
     return (
       
       <form onSubmit={this.submitForm}>
-        {console.log("state is" , this.state)}
+        
         <fieldset>
           <fieldset className="form-group">
             <input
