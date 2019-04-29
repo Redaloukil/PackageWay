@@ -11,7 +11,7 @@ import {
   DASHBORD_PAGE_LOADED,
   DASHBORD_PAGE_UNLOADED
 } from '../constants/actionTypes';
-
+import '../styles/dashbord.css';
 const EditProfileSettings = props => {
   if (props.isUser) {
     return (
@@ -71,7 +71,7 @@ class Dashbord extends React.Component {
 
   render() {
     return (
-      <div className="wrapper profile-page">
+      <div id="dashbord" className="wrapper profile-page">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         
 

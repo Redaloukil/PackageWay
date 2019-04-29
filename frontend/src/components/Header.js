@@ -13,15 +13,36 @@ const LoggedOutView = props => {
             Home
           </Link>
         </li>
-
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            About
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Events
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Cause
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Partners
+          </Link>
+        </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/register" className="nav-link">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
             Sign up
           </Link>
         </li>
@@ -98,7 +119,8 @@ class Header extends React.Component {
         <div className="container">
 
           <a className="navbar-brand">
-            {this.props.appName}
+            <span><img src="https://via.placeholder.com/50x50"/> {this.props.appName}</span>
+            
           </a>
 
           <LoggedOutView currentUser={this.props.currentUser}/>

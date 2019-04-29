@@ -2,51 +2,17 @@
     padding:2.5em;
 } */
 
-#header {
-    
-    height:100vh;
-    background-size: cover;
+section {
+    padding: 3% 0;
 }
 
-
-#header-desc {
-    text-align: center;
-    position: relative;
-    top:20vh!important;
-    color:#333;
-}
-
-
-#header-desc h1 {
-    font-size:500%;
-    font-size:300;
-}
-
-#header-desc p {
-    font-size:130%;
-    opacity:0.7;
-}
-
-#desc {
-    padding:4% 0%;
-}
-
-#desc h1 {
-    padding:4% 0%;
-    font-size:450%;
-    color:rgba(26, 188, 156,1.0);
-    font-weight:300;
-}
-
-#desc p {
-    opacity: 0.7;
-    font-size:120%;
-}
 .navbar-light .navbar-nav .nav-link {
     color: #ffffff !important;
     font-size:20px;
     display: inline-block !important;
 }
+
+
 
 .nav-pills.outline-active .nav-link.active {
     display: inline-block !important;
@@ -64,19 +30,52 @@
     color: #ffffff!important;
 }
 
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
+    height:800px;
+    
+}
+
 #header-tuto {
     position: relative;
     top:30vh;
 }
 
-
-.step {
-    padding:2%;
-    border-radius:50%;
+.section-title {
     text-align: center;
-    color:#333;
-    font-size:140%;
+    margin-bottom:50px;
+    font-weight: 300;
+    padding:8px 5px;
+    color: #e67e22;
+    border-bottom: 2px solid #e67e22;
+    display: inline-block;
+    text-align: center;
 }
+.cause {
+    padding:2%;
+}
+.cause img{
+    margin-bottom:4%;
+}
+.cause h2{
+    color: #e67e22;
+    font-size:150%;
+}
+.cause p{
+    color: #333;
+    font-size:90%;
+    opacity:1;
+
+    line-height:1.5rem;
+}
+
+#testimonials {
+    background-image: url('https://via.placeholder.com/1000x400');
+    background-size: cover; 
+    height:300px;
+    padding: 3% 0;
+}
+
+
 
 footer {
     background-color:rgba(52, 73, 94,1.0);
