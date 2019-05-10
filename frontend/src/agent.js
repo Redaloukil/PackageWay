@@ -27,7 +27,7 @@ const requests = {
 };
 
 const Auth = {
-  current: () =>
+  current: () => 
     requests.get('users/user/'),
   login: (username, password) =>
     requests.post('users/login/', {username, password }),
@@ -54,8 +54,8 @@ const Packages = {
     requests.get(`packages/${id}`),
   update: (id , title , body , longitude , largitude) =>
     requests.put(`packages/${id}`, {title , body , longitude , largitude}),
-  create: () =>
-    requests.post(`packages/`, { content : "reda" , content_type :"1"  , from_wilaya :"Oran"  })
+  create: (content , contentType , latitude , longitude ,from , fromWilaya) =>
+    requests.post(`packages/`, { content : content ,content_type :contentType ,latitude:latitude ,longitude : longitude ,from : from ,from_wilaya :fromWilaya })
 };
 
 

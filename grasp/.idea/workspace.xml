@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c80bc16d-4edc-4473-9e23-a7ad7928ea7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/backend/parcels/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/parcels/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/backend/parcels/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/parcels/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/backend/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/agent.js" afterDir="false" />
+    <list default="true" id="16c08773-7759-4d01-bf80-dc0445fb0993" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/backend/packages/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/packages/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/backend/packages/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/packages/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/backend/packages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/packages/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dashbord.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dashbord.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Editor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ListPagination.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Parcel/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Parcel/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ParcelList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ParcelList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/parcel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/parcel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/parcelList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/parcelList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Package/PackageActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Package/PackageActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Package/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Package/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/PackageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/PackageList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles/dashbord.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles/dashbord.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles/editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/parcel.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/parcel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,99 +32,59 @@
     <session id="808261047">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="go" value="7" />
+          <entry key="go" value="8" />
+          <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="7" />
+          <entry key="Go" value="8" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="go" value="1007" />
+          <entry key="go" value="637" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="1007" />
+          <entry key="Go" value="637" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/parcel.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="2" selection-start-line="2" selection-end-line="12" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="27" selection-end-column="1" />
-              <folding>
-                <element signature="e#14#36#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="414">
+              <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/go-1.10/src/net/http/response.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1566">
-              <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/models/parcel.go">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/go-1.10/src/encoding/json/decode.go">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2436">
-              <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/go-1.10/src/bufio/scan.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/go-1.10/src/io/io.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/go-1.10/src/net/http/client.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11281">
-              <caret line="402" column="31" selection-start-line="402" selection-start-column="31" selection-end-line="402" selection-end-column="31" />
+            <state>
+              <caret column="83" selection-start-column="83" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -139,7 +98,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/models/parcel.go" />
         <option value="$PROJECT_DIR$/main.go" />
       </list>
     </option>
@@ -155,26 +113,6 @@
     <option name="y" value="25" />
     <option name="width" value="1853" />
     <option name="height" value="1055" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State />
-          <State>
-            <id>GeneralGo</id>
-          </State>
-          <State>
-            <id>Go</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>GoFunctionCall</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -195,6 +133,15 @@
               <item name="grasp" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="grasp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="grasp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.10.1" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -204,7 +151,7 @@
   <component name="PropertiesComponent">
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -220,10 +167,39 @@
       </list>
     </option>
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.69666666" visible="true" weight="0.26547685" />
+      <window_info id="Structure" order="1" sideWeight="0.30333334" side_tool="true" visible="true" weight="0.26547685" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2576687" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -242,7 +218,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -251,55 +227,50 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/go-1.10/src/net/http/response.go">
+    <entry file="file:///usr/lib/go-1.10/src/io/ioutil/ioutil.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+        <state relative-caret-position="218">
+          <caret line="44" column="25" lean-forward="true" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go-1.10/src/encoding/json/decode.go">
+    <entry file="file:///usr/lib/go-1.10/src/bytes/boundary_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2436">
-          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-        </state>
+        <state relative-caret-position="-329" />
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go-1.10/src/bufio/scan.go">
+    <entry file="file:///usr/lib/go-1.10/src/bytes/bytes_amd64.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-        </state>
+        <state relative-caret-position="-2088" />
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go-1.10/src/io/io.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-        </state>
-      </provider>
+    <entry file="file:///usr/lib/go-1.10/src/os/dir_windows.go">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file:///usr/lib/go-1.10/src/net/http/client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11281">
-          <caret line="402" column="31" selection-start-line="402" selection-start-column="31" selection-end-line="402" selection-end-column="31" />
-        </state>
-      </provider>
+    <entry file="file:///usr/lib/go-1.10/src/os/dir_plan9.go">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/parcel.go">
+    <entry file="file:///usr/lib/go-1.10/src/builtin/builtin.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" selection-start-line="2" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="89">
+          <caret line="154" column="5" selection-start-line="154" selection-start-column="5" selection-end-line="154" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#36#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="414">
+          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/parcel.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="83" selection-start-column="83" selection-end-column="83" />
         </state>
       </provider>
     </entry>

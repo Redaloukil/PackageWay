@@ -27,11 +27,11 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case APP_LOAD:
       return {
-        ...state,
-        token: action.token || null,
-        appLoaded: true,
-        currentUser: action.payload ? { id : action.payload.id , username : action.payload.username , firstName:action.payload.firstName , lastName:action.payload.lastName } : null
-      };
+          ...state,
+          token: action.token || null,
+          appLoaded: true,
+          currentUser: action.payload ? { id : action.payload.id , username : action.payload.username , firstName:action.payload.firstName , lastName:action.payload.lastName } : null
+        };
     case REDIRECT:
       return { ...state, redirectTo: null };
     case LOGOUT:

@@ -5,7 +5,6 @@ import {
   ASYNC_START,
   UPDATE_FIELD_EDITOR,
 } from '../constants/actionTypes';
-import { KEY } from '../constants/mapKey';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -18,7 +17,6 @@ export default (state = {}, action) => {
         latitude : action.payload ? action.payload.parcel.latitude : '',
         fromWilaya : action.payload ? action.payload.parcel.fromWilaya : '',
         from : action.payload ? action.payload.parcel.from : '',
-        to : action.payload ? action.payload.parcel.to : '',
       };
     case EDITOR_PAGE_UNLOADED:
       return {};

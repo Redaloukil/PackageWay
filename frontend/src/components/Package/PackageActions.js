@@ -10,19 +10,19 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ParcelActions = props => {
-  const del = () => {
-    props.onClickDelete(agent.Parcels.del())
+  const del = (id) => {
+    props.onClickDelete(agent.Packages.del(id))
   };
   if (props) {
     return (
-      <span>
+      <span className="package-actions">
         
         <Link
-          to={`/edit/${props.id}`}
+          to={`/edit/${props.id}/`}
           className="btn btn-outline-secondary btn-sm">
           <i className="ion-edit"></i> Edit Parcel
         </Link>
-        <button className="btn btn-outline-danger btn-sm" onClick={del}>
+        <button className="btn btn-outline-danger btn-sm" onClick={() => del(props.id)}>
           <i className="ion-trash-a"></i> Delete Parcel
         </button>
 

@@ -76,7 +76,7 @@ class PackagesCurrentUserView(APIView):
         View All Packages By Current User
         """
         if request.user.is_authenticated:
-            packages = Package.objects.filter(user=request.user)
+            packages = Package.objects.filter(user=request.user ,recovered=False)
             return Response(data=PackageSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
         return Response({'authentification':'you are authenticated'})
 
@@ -120,4 +120,12 @@ class PackageRecoveredByDelivery(APIView):
         return Response({'authentification':'you are not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
+
+class PackagesNotRecoveredPerWilaya(APIView):
+    @staticmethod
+    def get(request , wilaya):
+        if request.user.is_authenticated:
+            packages = Package.objects.filter(from_wilaya=wilaya , recovered=False)
+            return Response(data=PackageSerializerPerUser(packages , many=True).data,status=status.HTTP_200_OK)
+        return Response({'authentification':'you are authenticated'})
 

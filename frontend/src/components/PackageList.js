@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Package from './Package';
+import '../styles/package.css';
 
 const PackageList = props => {
   if (!props.packages) {

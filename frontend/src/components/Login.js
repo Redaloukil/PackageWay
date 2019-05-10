@@ -53,7 +53,7 @@ class Login extends React.Component {
         <div className="container page">
           <div className="row">
 
-            <div className="col-md-6 offset-md-3 col-xs-12">
+            <div className="col-md-6 offset-md-3 col-xs-12 form-block">
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
                 <Link to="/register">
@@ -63,7 +63,7 @@ class Login extends React.Component {
 
               
 
-              <form onSubmit={this.submitForm(username, password)}>
+              <form onSubmit={this.submitForm(username, password)} >
                 <fieldset>
 
                   <fieldset className="form-group">

@@ -47,56 +47,70 @@ class Dashbord extends React.Component {
 
   renderTabs() {
     return (
-      <ul className="nav nav-pills outline-active">
-        <li className="nav-item">
-          <Link
-            className="nav-link active"
-            to="/dashbord/">
-            My packages
-          </Link>
-          <Link
-            className="nav-link"
-            to="/dashbord/notrecovered/">
-            Not Recovered
-          </Link>
-          <Link
-            className="nav-link"
-            to="/dashbord/recovered/">
-            Recovered
-          </Link>
-        </li>
+      <nav class="navbar bg-light">
+      <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/dashbord/packages/">
+              My packages
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/dashbord/notrecovered/">
+              Not Recovered
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/dashbord/recovered/">
+              Recovered
+            </Link>
+          </li>
       </ul>
+      </nav>
+      
     );
   }
 
   render() {
     return (
-      <div id="dashbord" className="wrapper profile-page">
+      <div id="dashbord" className="wrapper">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-        
-
+        <div className="container-fluid"> 
+        <section id="bord">
         <div className="container">
-          <div className="row">
-
-            <div className="col-xs-12 col-md-10 offset-md-1">
+        <div className="row">
+          <div className="col-sm-3">
+            <img src="https://via.placeholder.com/400x400" width="100%;"/>
+            {this.props.currentUser ? <h1>{this.props.currentUser.username}</h1> : null}
             
-              <div className="articles-toggle">
-                {this.renderTabs()}
-              </div>
-              <br/>
-
-              
-              <Switch>
-                <Route exact path="/dashbord/" component={PackagesList}/>
-                <Route path="/dashbord/notrecovered/" component={NotRecovered} />
-                <Route path="/dashbord/recovered/" component={Recovered}/>
-              </Switch>
-              
-                
-            </div>
+            {this.renderTabs()}
 
           </div>
+          <div className="col-sm-9">
+            
+            
+
+            
+            <Switch>
+              <Route exact path="/dashbord/packages/" component={PackagesList}/>
+              <Route path="/dashbord/notrecovered/" component={NotRecovered} />
+              <Route path="/dashbord/recovered/" component={Recovered}/>
+            </Switch>
+            
+              
+          </div>
+
         </div>
+      </div>
+      </section>
+
+        </div>
+                
 
       </div>
     );

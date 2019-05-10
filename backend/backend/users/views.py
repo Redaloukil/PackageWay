@@ -114,11 +114,14 @@ class UserDetail(APIView):
 
 
 class GetCurrentUser(APIView):
-    permission_classes = (IsAuthenticated,)    
+       
     @staticmethod
     def get(request):
-        user = User.objects.get(id = request.user.id)
-        if user :
-            serializer = UserSerializer(user)
-            return Response(data=serializer.data ,status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_204_NO_CONTENT) 
+        if request.user.is_authenticated : 
+            user = get_object_or_404(User , id=request.user.id)
+            if user :
+                serializer = UserSerializer(user)
+                return Response(data=serializer.data ,status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_204_NO_CONTENT) 
+        return Response({'authentification':'you are authenticated'})
+        

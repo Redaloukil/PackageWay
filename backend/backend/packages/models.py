@@ -7,7 +7,9 @@ WILAYAS = (
 )
 
 REGIONS = (
-    ()
+    ("0" , "Oran"),
+    ("1" , "Mostaganem"),
+    
 )
 
 TYPES = (
@@ -24,7 +26,7 @@ class Package(BaseModel):
     largitude = models.FloatField(default=1.2, blank=False)
     recovered = models.BooleanField(default=False, blank=False)
     arrived = models.BooleanField(default=False , blank=False)
-    from_wilaya = models.CharField(max_length=255 , choices=WILAYAS)
+    from_wilaya = models.CharField(max_length=255 , choices=WILAYAS ,default="0")
     from_address = models.CharField(max_length=255,default="53 ,cité les castors ,Es-sénia ,Oran", blank=False)
     
 
