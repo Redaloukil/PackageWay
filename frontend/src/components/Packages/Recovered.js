@@ -28,7 +28,7 @@ class Recovered extends React.Component {
 
   render() {
     return (
-      <div className="profile-page">
+      <div className="package-page">
         <PackageList packages={this.props.packages}/>
       </div>
     );

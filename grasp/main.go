@@ -3,8 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
+
+	"io/ioutil"
+
+	"github.com/tidwall/gjson"
 	"time"
 )
 
@@ -16,14 +19,11 @@ type Parcel struct {
 	Latitude  float32 `json:"latitude"`
 }
 
-type Foo struct {
-	Bar string
-}
-
-
 type Parcels struct {
 	Parcels []Parcel `json:"parcels"`
 }
+
+
 
 var myClient = &http.Client{Timeout: 10 * time.Second}
 
@@ -31,20 +31,20 @@ var myClient = &http.Client{Timeout: 10 * time.Second}
 // and decodes it as JSON into the given result,
 // which should be a pointer to the expected data.
 func getJSON(url string, result interface{}) error {
-	resp, err := http.Get(url);
+	resp, err := http.Get(url)
 	if err != nil {
-		return fmt.Errorf("cannot fetch URL %q: %v", url, err);
+		return fmt.Errorf("cannot fetch URL %q: %v", url, err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("unexpected http GET status: %s", resp.Status);
+		return fmt.Errorf("unexpected http GET status: %s", resp.Status)
 	}
 	// We could check the resulting content type
 	// here if desired.
 	resp_body, err := ioutil.ReadAll(resp.Body)
-	err = json.Unmarshal(resp_body ,&result);
+	err = json.Unmarshal(resp_body, &result)
 	if err != nil {
-		return fmt.Errorf("cannot decode JSON: %v", err);
+		return fmt.Errorf("cannot decode JSON: %v", err)
 	}
 	return nil
 }
@@ -53,7 +53,6 @@ func main() {
 	var client http.Client
 
 	var parcels Parcels
-
 
 	const URL = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=42.6044,-122.3345&destinations=45.5347,-122.6231&travelMode=driving&key=Ag4-ntJPWr3g6dGfBtudAzHyCoCwjaqpkmaaz3uNyU_bPoBf-4D6Cwisl_GwgNMe"
 
@@ -77,16 +76,44 @@ func main() {
 
 	//from the constructed path
 
-	result := Foo{}
+	// result := Foo{}
 
-	getJSON(URL,&result);
+	// getJSON(URL,&result);
 
-	fmt.Println(result);
+	// fmt.Println(result);
+
+	response, err := client.Get(URL)
+	if err != nil {
+		panic(err)
+	}
+	defer response.Body.Close()
+
+	bValue, _ := ioutil.ReadAll(response.Body)
+
+	myJson := string(bValue)
+	data := gjson.Parse(myJson).Value().(map[string]interface{})
+
+	//responseBytes, err := json.Marshal(data)
+
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	//fmt.Println(string(responseBytes))
+
+
+	resources := data["resourceSets"]
+	distance := resources.([]interface{})[0].(map[string] interface{})["resources"].([]interface{})[0].(map[string] interface{})["results"].([]interface{})[0].(map[string] interface{})["travelDuration"]
+
+	fmt.Println(distance)
+
+
+
+
+
+
 
 
 }
-
-
 
 //local search
 

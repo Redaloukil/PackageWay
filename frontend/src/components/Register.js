@@ -34,15 +34,40 @@ const mapDispatchToProps = dispatch => ({
 class Register extends React.Component {
   constructor() {
     super();
+    this.state = {
+      errors:{}
+    }
     this.changeUsername = ev => this.props.onChangeUsername(ev.target.value);
     this.changeFirstName = ev => this.props.onChangeFirstName(ev.target.value);
     this.changeLastName = ev => this.props.onChangeLastName(ev.target.value);
     this.changePassword = ev => this.props.onChangePassword(ev.target.value);
     this.changeCPassword = ev => this.props.onChangeCPassword(ev.target.value);
-    this.changeUserType = ev => this.props.onChangeUserType(ev.target.value);
     this.submitForm = (username, firstName , lastName ,  password ) => ev => {
       ev.preventDefault();
       this.props.onSubmit(username ,firstName , lastName ,password);
+    }
+    this.validate = data => {
+      const username = this.props.username;
+      const firstName = this.props.firstName;
+      const lastName = this.props.lastName;
+      const password = this.props.password;
+      const cpassword = this.props.cpassword;
+      const errors = {};
+      if (username.length <= 8 ) errors.username = "Invalid username";
+      if (firstName.length = 0 ) errors.firstName = "Invalid first name";
+      if (lastName.length = 0) errors.lastName = "Invalid last name";
+      if ((password.length == cpassword.length) && password.length >= 8) errors.inValidPassword = "Invalid password"
+        
+      
+      return errors;
+    }
+    this.onSubmit = e => {
+      e.preventDefault();
+      const errors = this.validate(this.state.data);
+      this.setState({ errors });
+      if (Object.keys(errors).length === 0) {
+          this.props.submit(this.state.data.username , this.state.data.password)
+      }
     }
   }
 
@@ -55,7 +80,7 @@ class Register extends React.Component {
     const lastName = this.props.lastName;
     const password = this.props.password;
     const cpassword = this.props.cpassword;
-    const userType = this.props.userType;
+    
     
     return (
       <div className="wrapper auth-page">
@@ -82,42 +107,45 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Username"
-                      value={this.props.username}
+                      value={username}
                       onChange={this.changeUsername} />
                   </fieldset>
+                  { this.state.errors.username ? <small></small> : null}
                   
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="First Name"
-                      value={this.props.firstName}
+                      value={firstName}
                       onChange={this.changeFirstName} />
                   </fieldset>
-                  
+                  { this.state.errors.username ? <small></small> : null}
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Last Name"
-                      value={this.props.lastName}
+                      value={lastName}
                       onChange={this.changeLastName} />
                   </fieldset>
+                  { this.state.errors.username ? <small></small> : null}
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      value={this.props.password}
+                      value={password}
                       onChange={this.changePassword} />
                   </fieldset>
+                  { this.state.errors.username ? <small></small> : null}
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Confirm Password"
-                      value={this.props.cpassword}
-                      onChange={this.changeConfirmPassword} />
+                      value={cpassword}
+                      onChange={this.changeCPassword} />
                   </fieldset>
                   
 

@@ -5,7 +5,6 @@ import agent from '../agent';
 import PackagesList from './Packages/PackagesList';
 import NotRecovered from './Packages/NotRecovered';
 import Recovered from './Packages/Recovered';
-
 import { connect } from 'react-redux';
 import {
   DASHBORD_PAGE_LOADED,
@@ -87,7 +86,6 @@ class Dashbord extends React.Component {
           <div className="col-sm-3">
             <img src="https://via.placeholder.com/400x400" width="100%;"/>
             {this.props.currentUser ? <h1>{this.props.currentUser.username}</h1> : null}
-            
             {this.renderTabs()}
 
           </div>
