@@ -23,13 +23,12 @@ class LoginView(APIView):
         """
         Get user data and API token
         """
-
-        user = get_object_or_404(User, username=request.data.get('username'))
-        user = authenticate(username=user.username, password=request.data.get('password'))
+        
+        user = authenticate(username=request.data.get('username'), password=request.data.get('password'))
         if user:
             serializer = UserSerializerLogin(user)
             return Response(serializer.data)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response({ "error" : "wrong credentials please verify you username or password" },status=status.HTTP_403_FORBIDDEN)
 
 # logout
 class LogoutView(APIView):
@@ -43,7 +42,7 @@ class LogoutView(APIView):
 
         token = get_object_or_404(Token, key=request.auth)
         token.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_200_OK)
 
 # users
 class UserView(APIView):

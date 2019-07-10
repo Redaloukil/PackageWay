@@ -22,8 +22,6 @@ class Package(BaseModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL , on_delete=models.CASCADE )
     content = models.CharField(max_length=255 ,blank=False)
     content_type = models.CharField(max_length=50 ,choices=TYPES)
-    longitude = models.FloatField(default=1.2 , blank=False)
-    largitude = models.FloatField(default=1.2, blank=False)
     recovered = models.BooleanField(default=False, blank=False)
     arrived = models.BooleanField(default=False , blank=False)
     from_wilaya = models.CharField(max_length=255 , choices=WILAYAS ,default="0")
@@ -34,4 +32,4 @@ class Package(BaseModel):
         default_related_name = 'packages'
 
     def __str__(self):
-        return self.title
+        return self.user 

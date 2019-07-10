@@ -66,7 +66,7 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "rest_framework",
-    'rest_framework.authtoken'
+    "rest_framework.authtoken",
 ]
 LOCAL_APPS = [
     "backend.users.apps.UsersAppConfig",
@@ -226,7 +226,7 @@ EMAIL_BACKEND = env(
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Daniel Roy Greenfeld""", "daniel-roy-greenfeld@example.com")]
+ADMINS = [("""Reda Loukil""", "loukil.red@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -248,3 +248,5 @@ SOCIALACCOUNT_ADAPTER = "backend.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '672080155422-ucuf0snbh4d7e9oi7op53aofc1djrb3r.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '1TJDLSZf_EQfOJTSwAMooFTy'

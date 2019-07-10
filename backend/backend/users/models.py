@@ -46,7 +46,7 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    image = models.ImageField(blank=True)
+    # image = models.ImageField(blank=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
 
     def __str__(self):

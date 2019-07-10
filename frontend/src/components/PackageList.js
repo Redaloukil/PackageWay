@@ -20,8 +20,16 @@ const PackageList = props => {
 
   return (
     
-    <div>
-    {console.log(props.packages)}
+    <table className="table">
+    <thead className="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Content</th>
+        <th scope="col">Content Type</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
       {
         props.packages.map((packages , key) => {
           return (
@@ -29,7 +37,8 @@ const PackageList = props => {
           );
         })
       }
-    </div>
+    </tbody>
+    </table>
   );
 };
 

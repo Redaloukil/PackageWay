@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Add a GeoJSON line</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+ 
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYWEiLCJhIjoiY2p0cHIzaW5wMDdpejQzbTI2NGpnM215ciJ9.7BluMTtZtz62qn_SREi8ig';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-0.63556958 , 35.72783329],
+    zoom: 11,
+    });
+    map.on('load', function () {
+            // We use D3 to fetch the JSON here so that we can parse and use it separately
+            // from GL JS's use in the added source. You can use any request method (library
+            // or otherwise) that you want.
+            fetch("http://localhost:8000/grasp/").then(function (response){
+                        // if (response.status !== 200) {
+                        //     console.log('Looks like there was a problem. Status Code: ' + response.status);
+                        //     return;
+                        // }
+                        // // Examine the text in the response
+                        response.json().then(function(data) {
+                            data.map((elem)=>{
+                                 path.push([ elem.longitude , elem.latitude ]);
+                                
+                            })
+                            
+                        });
+                        // // save full coordinate list for later
+                        // var coordinates = path;
+                        // var data = [path[0]];
+                        // save full coordinate list for later
+                        
+                        var coordinates = path;
+
+                        console.log(coordinates);
+                        // start by showing just the first coordinate
+                        
+                        // add it to the map
+                        // map.addSource('trace', { type: 'geojson', data: push });
+                       
+                        map.addLayer({
+                            "id": "route",
+                            "type": "line",
+                            "source": {
+                            "type": "geojson",
+                            "data": {
+                            "type": "Feature",
+                            "properties": {},
+                            "geometry": {
+                            "type": "LineString",
+                            "coordinates": [
+                                [-0.63556958 , 35.72783329 ],
+                                [-0.70913802 , 35.65140543 ],
+                                [-0.68364666 , 35.69304011 ],
+                                [-0.70552693 , 35.68413852 ],
+                                [-0.58568247 , 35.69292297 ],
+                                [-0.66114607 , 35.72808531 ],
+                                [-0.64265057 , 35.65173331 ],
+                                [-0.69506551 , 35.69491233 ],
+                                [-0.69361099 , 35.62801517 ],
+                                [-0.6987486 , 35.70395376 ],
+                            ]
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "line-join": "round",
+                                "line-cap": "round"
+                            },
+                            "paint": {
+                                "line-color": "#e74c3c",
+                                "line-width": 4
+                            }
+                            });
+                        });
+                        
+                        // setup the viewport
+                       
+            });
+    
+   
+</script>
+ 
+</body>
+</html>

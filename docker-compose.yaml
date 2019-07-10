@@ -13,7 +13,7 @@ services:
     volumes:
     - ./frontend/:/app
     ports:
-    - "3000:3000"
+    - "4100:4100"
   
   django: &django
     build:
@@ -24,14 +24,39 @@ services:
     volumes:
       - ./backend:/app
     environment:
+      - POSTGRES_USER=backend
       - USE_DOCKER=yes
     ports:
       - "8000:8000"
     command: /start.sh
-  
-    
 
-  
+  postgres:
+    build:
+      context: ./backend/
+      dockerfile: ./compose/postgres/Dockerfile
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
+      - postgres_backup_local:/backups
+    environment:
+      - POSTGRES_USER=backend
 
-  
-  
+  redis:
+    image: redis:3.0
+
+  # celeryworker:
+  #   # https://github.com/docker/compose/issues/3220
+  #   <<: *django
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #   ports: []
+  #   command: /start-celeryworker.sh
+
+  # celerybeat:
+  #   # https://github.com/docker/compose/issues/3220
+  #   <<: *django
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #   ports: []
+  #   command: /start-celerybeat.sh

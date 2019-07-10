@@ -100,6 +100,7 @@ class Settings extends React.Component {
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
 
         <div className="container page">
+          {this.props.errors ? <div class="alert alert-light" role="alert">wrong credentials</div> : null }
           <div className="row">
             <div className="col-md-6 offset-md-3 col-xs-12">
 

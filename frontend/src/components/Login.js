@@ -50,7 +50,8 @@ class Login extends React.Component {
     return (
       <div className="wrapper auth-page">
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-        <div className="container page">
+          <div className="container page">
+
           <div className="row">
 
             <div className="col-md-6 offset-md-3 col-xs-12 form-block">
@@ -103,3 +104,4 @@ class Login extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+  

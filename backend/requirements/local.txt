@@ -14,11 +14,12 @@ mypy==0.701  # https://github.com/python/mypy
 # ------------------------------------------------------------------------------
 flake8==3.7.5  # https://github.com/PyCQA/flake8
 coverage==4.5.3  # https://github.com/nedbat/coveragepy
-black==19.3b0  # https://github.com/ambv/black
+#black  # https://github.com/ambv/black
 pylint-django==2.0.8  # https://github.com/PyCQA/pylint-django
 
 # Django
 # ------------------------------------------------------------------------------
+django-allauth #https://github.com/FactoryBoy/factory_boy
 factory-boy==2.11.1  # https://github.com/FactoryBoy/factory_boy
 
 django-debug-toolbar==1.11  # https://github.com/jazzband/django-debug-toolbar

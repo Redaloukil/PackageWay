@@ -43,7 +43,7 @@ const Packages = {
   all: () =>
     requests.get(`packages/`),
   perUser:() => 
-    requests.get(`packages/user/`)  ,
+    requests.get(`packages/user/notrecovered/`)  ,
   perUserRecovered: () =>
     requests.get(`packages/user/recovered/`),
   perUserNotRecovered: () =>
@@ -52,10 +52,10 @@ const Packages = {
     requests.del(`packages/${id}`),
   byId: id =>
     requests.get(`packages/${id}`),
-  update: (id , title , body , longitude , largitude) =>
-    requests.put(`packages/${id}`, {title , body , longitude , largitude}),
-  create: (content , contentType , latitude , longitude ,from , fromWilaya) =>
-    requests.post(`packages/`, { content : content ,content_type :contentType ,latitude:latitude ,longitude : longitude ,from : from ,from_wilaya :fromWilaya })
+  update: (id , title , body ) =>
+    requests.put(`packages/${id}`, {title , body }),
+  create: (content , contentType ,from , fromWilaya) =>
+    requests.post(`packages/`, { content,content_type :contentType ,from,from_wilaya :fromWilaya })
 };
 
 

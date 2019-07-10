@@ -55,6 +55,10 @@ class UserSerializerCreate(serializers.ModelSerializer):
 class UserSerializerLogin(UserSerializer):
     token = serializers.SerializerMethodField()
 
+    # @staticmethod
+    # def validate():
+        
+
     @staticmethod
     def get_token(user):
         """
