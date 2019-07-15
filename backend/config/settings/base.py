@@ -72,6 +72,7 @@ LOCAL_APPS = [
     "backend.users.apps.UsersAppConfig",
     "backend.packages.apps.PackagesAppConfig",
     "backend.general.apps.GeneralAppConfig",
+    "backend.helps.apps.HelpsAppConfig",
     
     # Your stuff: custom apps go here
 ]

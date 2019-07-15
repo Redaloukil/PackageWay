@@ -19,7 +19,7 @@ class PackageView(APIView):
         if request.user.is_authenticated and request.user.is_superuser :
             packages = Package.objects.all().order_by('-id')
             return Response(PackageSerializer(packages,many=True).data)
-        return Response({'authentification':'you are not authenticated as superuser'})
+        return Response({'errors':'you are not authenticated as superuser'})
 
     @staticmethod
     def post(request):
@@ -32,7 +32,7 @@ class PackageView(APIView):
                 serializer.save()
                 return Response(PackageSerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'authentification':'you are not authenticated'})
+        return Response({'errors':'you are not authenticated'})
 
 class PackageDetail(APIView):
     permission_classes = (IsAuthenticated,)    

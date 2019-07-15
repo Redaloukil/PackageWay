@@ -34,9 +34,9 @@ const Auth = {
   register: (username,firstName , lastName , password) =>
     requests.post('users/', { username, first_name : firstName , last_name:lastName ,  password}),
   save: (firstName , lastName) =>
-    requests.put('users/user', { first_name : firstName , last_name:lastName }),
+    requests.put('users/user/', { first_name : firstName , last_name:lastName }),
   logout: () => 
-    requests.get('logout/'),
+    requests.get('users/logout/'),
 };
 
 const Packages = {
@@ -58,10 +58,22 @@ const Packages = {
     requests.post(`packages/`, { content,content_type :contentType ,from,from_wilaya :fromWilaya })
 };
 
+const Helps = {
+  all: () =>
+    requests.get(`requests/`),
+  create: () =>
+    requests.get(`requests/`),
+};
+
+const Donations = {
+  
+}
 
 
 export default {
   Packages,
+  Helps,
   Auth,
+  Donations,
   setToken: _token => { token = _token; }
 };

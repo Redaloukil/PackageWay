@@ -10,6 +10,7 @@ import Login from '../components/Login';
 import Dashbord from '../components/Dashbord';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
+
 import { store } from '../store';
 import { push } from 'react-router-redux';
 import '../styles/style.css';
@@ -53,8 +54,10 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
-        <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-          <Switch>
+          <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+          
+          <main id="content">
+            <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/login/" component={Login} />
               <Route path="/register/" component={Register}/>
@@ -63,6 +66,8 @@ class App extends React.Component {
               <Route path="/dashbord/" component={Dashbord}/>
               <Route path="/settings/" component={Settings}/>
             </Switch>
+          </main>  
+          
         </div>
       );
     }

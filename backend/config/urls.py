@@ -16,6 +16,8 @@ urlpatterns = [
     path("users/", include("backend.users.urls", namespace="users")),
     # Packages management
     path("packages/", include("backend.packages.urls", namespace="packages")),
+
+    path("helps/", include("backend.helps.urls", namespace="helps")),
     # path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

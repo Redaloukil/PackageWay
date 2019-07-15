@@ -11,12 +11,13 @@ USER_TYPE = (
 )
 
 class User(AbstractUser):
-    username = models.CharField(_("Name of User"), blank=True, max_length=255 , unique=True)
+    username = models.CharField(_("Name of User"), blank=False, max_length=255 , unique=True)
     first_name = models.CharField(max_length=255 , blank=False)
     last_name = models.CharField(max_length=255 , blank=False)
     user_type = models.CharField( choices=USER_TYPE ,max_length=10 ,default="0")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    
     
     objects = UserManager()
     
@@ -25,7 +26,7 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'username'
 
-    REQUIRED_FIELDS = ['first_name' , 'last_name',]
+    REQUIRED_FIELDS = ['first_name' ,'last_name' ,'']
 
     class Meta:
         app_label = 'users'

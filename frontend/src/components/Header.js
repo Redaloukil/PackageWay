@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { LOGOUT } from '../constants/actionTypes';
 import { connect } from 'react-redux';
 import agent from '../agent';
+import '../styles/navbar.css';
+
+
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -15,14 +18,10 @@ const LoggedOutView = props => {
         </li>
         <li className="nav-item">
           <Link to="/" className="nav-link">
-            About
+            AboutUs
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Events
-          </Link>
-        </li>
+        
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Cause
@@ -35,18 +34,22 @@ const LoggedOutView = props => {
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">
-          <i class="fa fa-sign-in" aria-hidden="true"></i>
+          <i className="fa fa-sign-in" aria-hidden="true"></i>
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/register" className="nav-link">
-          <i class="fa fa-address-book" aria-hidden="true"></i>
+          <i className="fa fa-address-book" aria-hidden="true"></i>
             Sign up
           </Link>
         </li>
-        
+        <li id="navbar-action"className="nav-item">
+            <Link to="/login" className="nav-link">
+              Donate
+            </Link>
+          </li>
 
       </ul>
     );
@@ -115,17 +118,24 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-light navbar-fixed-top">
-        <div className="container">
+      <nav id="navbar-top" className="navbar navbar-light navbar-fixed-top">
+        <div id="top-bar">
+          <div className="container-fluid">
+            <p>hello world</p>
+          </div>
+        </div>
+        <div id="bottom-bar">
+          <div className="container">
+              <a>
+              <span>{this.props.appName}</span>
+            </a>
 
-          <a className="navbar-brand">
-            <span><img src="https://via.placeholder.com/50x50"/> {this.props.appName}</span>
-            
-          </a>
+            <LoggedOutView currentUser={this.props.currentUser}/>
 
-          <LoggedOutView currentUser={this.props.currentUser}/>
+            <LoggedInView logout={this.logout} currentUser={this.props.currentUser}/>
 
-          <LoggedInView logout={this.logout} currentUser={this.props.currentUser}/>
+
+            </div>
         </div>
       </nav>
     );

@@ -5,12 +5,14 @@ import agent from '../agent';
 import PackagesList from './Packages/PackagesList';
 import NotRecovered from './Packages/NotRecovered';
 import Recovered from './Packages/Recovered';
+import RequestsList from './Requests/RequestsList';
 import { connect } from 'react-redux';
 import {
   DASHBORD_PAGE_LOADED,
   DASHBORD_PAGE_UNLOADED
 } from '../constants/actionTypes';
 import '../styles/dashbord.css';
+
 const EditProfileSettings = props => {
   if (props.isUser) {
     return (
@@ -69,6 +71,13 @@ class Dashbord extends React.Component {
               Recovered
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/dashbord/requests/">
+              Recovered
+            </Link>
+          </li>
       </ul>
       </nav>
       
@@ -81,26 +90,21 @@ class Dashbord extends React.Component {
       <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="container-fluid"> 
         <section id="bord">
-        <div className="container">
+        <div className="container-fluid">
         <div className="row">
           <div className="col-sm-3">
-            <img src="https://via.placeholder.com/400x400" width="100%;"/>
             {this.props.currentUser ? <h1>{this.props.currentUser.username}</h1> : null}
             {this.renderTabs()}
 
           </div>
           <div className="col-sm-9">
-            
-            
-
-            
             <Switch>
               <Route exact path="/dashbord/packages/" component={PackagesList}/>
               <Route path="/dashbord/notrecovered/" component={NotRecovered} />
               <Route path="/dashbord/recovered/" component={Recovered}/>
+              <Route path="/dashbord/requests/" component={RequestsList}/>
+              <Route path="/dashbord/donate/" component={RequestsList}/>
             </Switch>
-            
-              
           </div>
 
         </div>

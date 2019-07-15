@@ -1,0 +1,51 @@
+#top-bar {
+    background-color: #4b4e6d ;
+    color: white;
+    padding:0px 40px;
+    font-size:80%;
+    font-weight:300;
+}
+
+#bottom-bar {
+     padding:10px 0px;
+}
+
+#navbar-top {
+    z-index:100;
+    padding:0px 0;
+}
+
+#navbar-top .container {
+    margin-top:-10px;
+}
+
+
+.navbar {
+    background-color:#493548;
+    padding:10px 0;
+}
+
+.navbar-brand {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size:100% !important;
+    font-weight:700;
+    color: fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color:#fff;
+    margin:0 10px;
+    padding:0 0;
+}
+
+
+#navbar-action {
+    border: 2px solid #333;
+    background-color:#333;
+    border-radius:200px;
+    color: #fff;
+}
+
+#navbar-action .navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}

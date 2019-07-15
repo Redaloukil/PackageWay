@@ -40,7 +40,7 @@ class Editor extends React.Component {
       this.changeContent = updateFieldEvent('content');
       this.changeContentType = updateFieldEvent('contentType');
       this.changeFrom = updateFieldEvent('from');
-      this.changeTo = updateFieldEvent('to')
+      
       
       this.validate = () => {
         var errors = {};
@@ -59,13 +59,14 @@ class Editor extends React.Component {
       this.submitForm = ev => {
         ev.preventDefault();
         //validate package information
-        if (Object.keys(this.state.errors)){
+        this.validate();
+        if (Object.keys(this.state.errors) != 0){
           agent.Packages.create(
             this.props.content , "0",this.props.from , "0"
           );
           this.props.onSubmit();
         }
-        
+        console.log("not created");
       
     };
     
@@ -110,31 +111,31 @@ class Editor extends React.Component {
                   </fieldset>
                   { this.state.errors.content ? <ErrorField text={this.state.errors.content}/> : null}
                   <fieldset className="form-group">
-                  <div class="form-group">
+                  <div className="form-group">
                   <label for="wilayaSelection">Content Type</label>
-                    <select class="form-control" id="exampleFormControlSelect1" onChange={this.changeFormWilaya}>
-                    <option value="0">Food</option>
-                    <option value="1">Clothes</option>
-                    <option value="2">Others</option>
+                    <select className="form-control" id="exampleFormControlSelect1" onChange={this.changeFormWilaya}>
+                    <option onClick={this.onChangeType} value="0">Food</option>
+                    <option onClick={this.onChangeType} value="1">Clothes</option>
+                    <option onClick={this.onChangeType} value="2">Others</option>
                     
                     </select>
                     </div>
                  </fieldset>
                   
                  <fieldset className="form-group">
-                  <div class="form-group">
+                  <div className="form-group">
                   <label for="wilayaSelection">Wilaya</label>
-                    <select class="form-control" id="exampleFormControlSelect1" onChange={this.changeFormWilaya}>
-                    <option value="0">Oran</option>
-                    <option value="1">Mostaganem</option>
-                    <option value="2">Telemcen</option>
+                    <select className="form-control" id="exampleFormControlSelect1" onChange={this.changeFormWilaya}>
+                    <option value="0" >Oran</option>
+                    <option value="1" >Mostaganem</option>
+                    <option value="2" >Telemcen</option>
                     
                     </select>
                     </div>
                  </fieldset>
                  <fieldset className="form-group">
                   <label for="exampleInputEmail1" className="form-label">From Address</label>
-                  <small id="addressHelp" class="form-text text-muted">Well never share your email with anyone else.</small>
+                  <small id="addressHelp" className="form-text text-muted">Well never share your email with anyone else.</small>
                     <input
                     className="form-control form-control-lg"
                     type="text"
