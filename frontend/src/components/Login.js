@@ -56,10 +56,7 @@ class Login extends React.Component {
         </div>
       
       </div>
-      
-      
-      
-    </div>        
+      </div>        
           <div className="container page">
 
           <div className="row">
