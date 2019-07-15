@@ -1,3 +1,0 @@
-TODOS LIST : 
-1 - Return non authentification errors messages. 
-2 - Implement social auth in backend service.
