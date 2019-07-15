@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import { UPDATE_FIELD_AUTH , REGISTER , REGISTER_PAGE_UNLOADED } from '../constants/actionTypes';
-import Header from './Header';
+import '../styles/auth.css';
 
 const mapStateToProps = state => ({ 
   ...state.auth,
@@ -84,88 +84,102 @@ class Register extends React.Component {
     
     
     return (
-      <div className="wrapper auth-page">
-      
-
-        <div className="container page">
-          <div className="row">
-
-            <div className="col-md-6 offset-md-3 col-xs-12 form-block">
-              <div class="alert alert-light" role="alert">
-                {this.props.errors}
-              </div>  
-              <h1 className="text-xs-center">Sign Up</h1>
-              <p className="text-xs-center">
-                <Link to="/login">
-                  Have an account?
-                </Link>
-              </p>
-
-              
-
-              <form onSubmit={this.submitForm}>
-                <fieldset>
-
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      placeholder="Username"
-                      value={username}
-                      onChange={this.changeUsername} />
-                  </fieldset>
-                  { this.state.errors.username ? <small>Username Field is required</small> : null}
-                  
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      placeholder="First Name"
-                      value={firstName}
-                      onChange={this.changeFirstName} />
-                  </fieldset>
-                  { this.state.errors.firstName ? <small>First Name field is required</small> : null}
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      placeholder="Last Name"
-                      value={lastName}
-                      onChange={this.changeLastName} />
-                  </fieldset>
-                  { this.state.errors.lastName ? <small>Last Name field is required</small> : null}
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={this.changePassword} />
-                  </fieldset>
-                  { this.state.errors.password? <small>Password field is required</small> : null}
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      placeholder="Confirm Password"
-                      value={cpassword}
-                      onChange={this.changeCPassword} />
-                  </fieldset>
-                  
-                  
-
-                  <button 
-                    className="btn btn-lg btn-primary pull-xs-right"
-                    type="submit">
-                    Sign up
-                  </button>
-
-                </fieldset>
-              </form>
+      <div className="auth-page">
+        <div className="banner">
+          <div className="container-fluid">
+            <div className="content">
+              <h1 className="text-xs-left">Join us</h1>
             </div>
-
+          
           </div>
+          
+          
+          
         </div>
+        <section>
+        <div className="container-fluid">
+        <div className="row">
+
+          <div className="col-md-6 offset-md-3 col-xs-12 form-block">
+            <div class="alert alert-light" role="alert">
+              {this.props.errors}
+            </div>  
+            
+            <p className="text-xs-center">
+              <Link to="/login">
+                Have an account?
+              </Link>
+            </p>
+
+            
+
+            <form onSubmit={this.submitForm}>
+              <fieldset>
+
+                <fieldset className="form-group">
+                  <label>hello world</label>
+                  <input
+                    className="form-control form-control-lg"
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={this.changeUsername} />
+                </fieldset>
+                { this.state.errors.username ? <small>Username Field is required</small> : null}
+                
+                <fieldset className="form-group">
+                <label>hello world</label>
+                  <input
+                    className="form-control form-control-lg"
+                    type="text"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={this.changeFirstName} />
+                </fieldset>
+                { this.state.errors.firstName ? <small>First Name field is required</small> : null}
+                <fieldset className="form-group">
+                  <input
+                    className="form-control form-control-lg"
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={this.changeLastName} />
+                </fieldset>
+                { this.state.errors.lastName ? <small>Last Name field is required</small> : null}
+                <fieldset className="form-group">
+                  <input
+                    className="form-control form-control-lg"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={this.changePassword} />
+                </fieldset>
+                { this.state.errors.password? <small>Password field is required</small> : null}
+                <fieldset className="form-group">
+                  <input
+                    className="form-control form-control-lg"
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={cpassword}
+                    onChange={this.changeCPassword} />
+                </fieldset>
+                
+                
+
+                <button 
+                  className="btn btn-lg btn-primary pull-xs-right"
+                  type="submit">
+                  Sign up
+                </button>
+
+              </fieldset>
+            </form>
+          </div>
+
+        </div>
+      </div>
+        </section>
+        
       </div>
     );
   }

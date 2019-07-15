@@ -121,12 +121,17 @@ class Header extends React.Component {
       <nav id="navbar-top" className="navbar navbar-light navbar-fixed-top">
         <div id="top-bar">
           <div className="container-fluid">
-            <p>hello world</p>
+           <div id="title">
+            <h1>PackageWay.Corp</h1> <p>hello world this is our corporation</p>
+           </div>
+              
+              
+             
           </div>
         </div>
         <div id="bottom-bar">
           <div className="container">
-              <a>
+            <a className="navbar-brand">
               <span>{this.props.appName}</span>
             </a>
 

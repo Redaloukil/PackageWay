@@ -13,6 +13,14 @@ section {
     padding: 3% 0;
 }
 
+.action {
+    border: 2px solid #d496a7;
+    background-color:#d496a7;
+    border-radius:200px;
+    color: #fff;
+    padding:10px 20px;
+}
+
 p {
     font-size: 120%;
     opacity:0.9; 

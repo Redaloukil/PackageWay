@@ -1,0 +1,32 @@
+header {
+    background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-size:cover;
+    height:85vh;
+}
+
+header #content {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: 30vh;
+    font-size:100%;
+    color: rgba(255, 255, 255, 1);
+}
+
+header #content h1 {
+    font-size:400%;
+    font-weight:300;
+}
+
+header .roles {
+    margin-top:3%;
+    padding:30px 20px;
+}
+.role {
+    text-align: center;
+    background-color:#FFF;
+    color:#333;
+    padding: 30px 0;
+    font-weight:700;
+    height: 20vh;
+}

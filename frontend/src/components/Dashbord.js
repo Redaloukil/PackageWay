@@ -87,7 +87,7 @@ class Dashbord extends React.Component {
   render() {
     return (
       <div id="dashbord" className="wrapper">
-      <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+      // <Header appName={this.props.appName} currentUser={this.props.currentUser} />
         <div className="container-fluid"> 
         <section id="bord">
         <div className="container-fluid">
