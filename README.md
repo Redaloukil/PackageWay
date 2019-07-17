@@ -1,8 +1,19 @@
 <img src="package_way.jpg"/>
 
-# Package Way
-PackageWay is a web platform. It enables people to make an send any kind of things that can help poor or homeless people, people can donate and create charity community around 
+## Package Way
+PackageWay is a web platform which enables people to donate and send any kind of things that can help poor and homeless people, people can donate and create charity community around it. 
 
-## Hello world
+## Features
+* Create Account (Signup)
+* Login to dashbord
+* Create packages 
 
-## The second largest heading
+
+## Todos
+* Donate money with payment gateway
+
+## Technologies
+* Docker
+* Django 
+* Django rest Framework
+* React/Redux
