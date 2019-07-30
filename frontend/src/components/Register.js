@@ -86,15 +86,11 @@ class Register extends React.Component {
     return (
       <div className="auth-page">
       <div className="banner">
-      <div className="container-fluid">
-        <div className="content">
-          <div className="container">
-          <h1 className="text-xs-left">Signup | Please provide your credentials</h1>
-          </div>
+        <div className="container">
+          <h1 className="text-xs-left">Signup</h1>
         </div>
+      </div>
       
-      </div>
-      </div>
       <div className="container page">
         <div className="row">
 
@@ -103,7 +99,7 @@ class Register extends React.Component {
               {this.props.errors}
             </div>  
             
-            <p className="text-xs-center">
+            <p className="text-xs-left">
               <Link to="/login">
                 Have an account?
               </Link>
@@ -115,7 +111,7 @@ class Register extends React.Component {
               <fieldset>
 
                 <fieldset className="form-group">
-                  <label>hello world</label>
+                  <label>Username</label>
                   <input
                     className="form-control form-control-lg"
                     type="text"
@@ -126,7 +122,7 @@ class Register extends React.Component {
                 { this.state.errors.username ? <small>Username Field is required</small> : null}
                 
                 <fieldset className="form-group">
-                <label>hello world</label>
+                <label>First Name</label>
                   <input
                     className="form-control form-control-lg"
                     type="text"
@@ -136,6 +132,7 @@ class Register extends React.Component {
                 </fieldset>
                 { this.state.errors.firstName ? <small>First Name field is required</small> : null}
                 <fieldset className="form-group">
+                  <label>Last Name</label>  
                   <input
                     className="form-control form-control-lg"
                     type="text"
@@ -145,6 +142,7 @@ class Register extends React.Component {
                 </fieldset>
                 { this.state.errors.lastName ? <small>Last Name field is required</small> : null}
                 <fieldset className="form-group">
+                  <label>Password</label>
                   <input
                     className="form-control form-control-lg"
                     type="password"
@@ -154,6 +152,7 @@ class Register extends React.Component {
                 </fieldset>
                 { this.state.errors.password? <small>Password field is required</small> : null}
                 <fieldset className="form-group">
+                  <label>Confirm Password</label>
                   <input
                     className="form-control form-control-lg"
                     type="password"

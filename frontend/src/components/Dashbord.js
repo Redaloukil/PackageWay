@@ -3,10 +3,10 @@ import Header from './Header';
 import { Link  , Route , Switch} from 'react-router-dom';
 import agent from '../agent';
 import PackagesList from './Packages/PackagesList';
-import NotRecovered from './Packages/NotRecovered';
-import Recovered from './Packages/Recovered';
 import RequestsList from './Requests/RequestsList';
-import { connect } from 'react-redux';
+import Donate from './Donation/index';
+import Settings from './Settings';
+ import { connect } from 'react-redux';
 import {
   DASHBORD_PAGE_LOADED,
   DASHBORD_PAGE_UNLOADED
@@ -92,8 +92,9 @@ class Dashbord extends React.Component {
           <div className="col-sm-9">
             <Switch>
               <Route exact path="/dashbord/packages/" component={PackagesList}/>
-              <Route exact path="/dashbord/donate/" component={}/>
-              <Route exact path="/dashbord/settings/" component={}/>
+              <Route exact path="/dashbord/donate/" component={Donate}/>
+              <Route exact path="/dashbord/requests/" component={RequestsList}/>
+              <Route exact path="/dashbord/settings/" component={Settings}/>
              </Switch>
           </div>
 

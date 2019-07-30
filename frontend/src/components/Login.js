@@ -49,16 +49,11 @@ class Login extends React.Component {
     const password = this.props.password;
     return (
       <div className="auth-page">
-      <div className="banner">
-      <div className="container-fluid">
-        <div className="content">
-          <div className="container">
-          <h1 className="text-xs-left">Login | Please provide your credentials</h1>
-          </div>
-        </div>
-      
-      </div>
-      </div>        
+          <div className="banner">
+            <div className="container">
+              <h1 className="text-xs-left">Login</h1>
+            </div>
+          </div>        
           <div className="container page">
 
           <div className="row">
@@ -68,8 +63,8 @@ class Login extends React.Component {
             <div class="alert alert-light" role="alert">
             {this.props.errors}
           </div>  
-              <h1 className="text-xs-center">Sign In</h1>
-              <p className="text-xs-center">
+              <h1 className="text-xs-left"></h1>
+              <p className="text-xs-left">
                 <Link to="/register">
                   Need an account?
                 </Link>
@@ -81,6 +76,7 @@ class Login extends React.Component {
                 <fieldset>
 
                   <fieldset className="form-group">
+                    <label>Username or Email</label>
                     <input
                       className="form-control form-control-lg"
                       type="text"
@@ -90,7 +86,8 @@ class Login extends React.Component {
                   </fieldset>
 
                   <fieldset className="form-group">
-                    <input
+                    <label>Password</label>
+                  <input
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"

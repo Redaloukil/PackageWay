@@ -13,6 +13,9 @@ section {
     padding: 3% 0;
 }
 
+.logo {
+    color: #4b4e6d;
+}
 .action {
     border: 2px solid #d496a7;
     background-color:#d496a7;
@@ -35,7 +38,14 @@ p {
     opacity:0.9; 
        
 }
+.btn-primary {
+    background-color: #d496a7;
+    border: 2px solid #d496a7;
+}
 
+a {
+    color: #d496a7;
+}
 /* #content {
     padding-top:10vh;
 } */
