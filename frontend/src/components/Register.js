@@ -85,22 +85,20 @@ class Register extends React.Component {
     
     return (
       <div className="auth-page">
-        <div className="banner">
-          <div className="container-fluid">
-            <div className="content">
-              <h1 className="text-xs-left">Join us</h1>
-            </div>
-          
+      <div className="banner">
+      <div className="container-fluid">
+        <div className="content">
+          <div className="container">
+          <h1 className="text-xs-left">Signup | Please provide your credentials</h1>
           </div>
-          
-          
-          
         </div>
-        <section>
-        <div className="container-fluid">
+      
+      </div>
+      </div>
+      <div className="container page">
         <div className="row">
 
-          <div className="col-md-6 offset-md-3 col-xs-12 form-block">
+          <div className="col-md-10 offset-md-1 col-xs-12 form-block">
             <div class="alert alert-light" role="alert">
               {this.props.errors}
             </div>  
@@ -178,9 +176,9 @@ class Register extends React.Component {
 
         </div>
       </div>
-        </section>
+    </div>
         
-      </div>
+      
     );
   }
 }

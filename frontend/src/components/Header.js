@@ -122,8 +122,10 @@ class Header extends React.Component {
         <div id="top-bar">
           <div className="container-fluid">
            <div id="title">
-            <h1>PackageWay.Corp</h1> <p>hello world this is our corporation</p>
+           <div className="text-left">
+           <h1>PackageWay.Corp</h1> <p>hello world this is our corporation</p>
            </div>
+          </div>
               
               
              

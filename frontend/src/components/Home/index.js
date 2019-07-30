@@ -2,13 +2,17 @@ import Banner from './Banner';
 import React from 'react';
 import { connect } from 'react-redux';
 import '../../styles/home.css';
+import Width from './Width';
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './../Footer';
+
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
   
 } from '../../constants/actionTypes';
+
+
 
 
 
@@ -35,7 +39,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-page">
+      <main className="home-page">
         <Header/>
         <section id="presentation" className="">
           <div className="center">
@@ -62,9 +66,9 @@ class Home extends React.Component {
           
         </section>
         <section id="ourstory">
-          <h1></h1>
-          
-          
+          <div id="Home-image" class="">
+
+          </div>
         </section>
         <section className="bd-example" id="testimonials">
         
@@ -73,9 +77,9 @@ class Home extends React.Component {
           
         </section>
         
-        <Footer/>
-          
-      </div>
+        
+        
+      </main>
     );
   }
 }

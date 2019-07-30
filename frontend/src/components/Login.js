@@ -48,11 +48,13 @@ class Login extends React.Component {
     const username = this.props.username;
     const password = this.props.password;
     return (
-      <div className=" auth-page">
+      <div className="auth-page">
       <div className="banner">
       <div className="container-fluid">
         <div className="content">
-          <h1 className="text-xs-left">Login</h1>
+          <div className="container">
+          <h1 className="text-xs-left">Login | Please provide your credentials</h1>
+          </div>
         </div>
       
       </div>
@@ -62,7 +64,7 @@ class Login extends React.Component {
           <div className="row">
           
 
-            <div className="col-md-6 offset-md-3 col-xs-12 form-block">
+            <div className="col-md-10 offset-md-1 col-xs-12 form-block">
             <div class="alert alert-light" role="alert">
             {this.props.errors}
           </div>  

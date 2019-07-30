@@ -42,6 +42,8 @@ const Auth = {
 const Packages = {
   all: () =>
     requests.get(`packages/`),
+  byFilter : (filter) => 
+    requests.get(`packages/${filter}`),
   perUser:() => 
     requests.get(`packages/user/notrecovered/`)  ,
   perUserRecovered: () =>
@@ -52,10 +54,12 @@ const Packages = {
     requests.del(`packages/${id}`),
   byId: id =>
     requests.get(`packages/${id}`),
+  
   update: (id , title , body ) =>
     requests.put(`packages/${id}`, {title , body }),
   create: (content , contentType ,from , fromWilaya) =>
     requests.post(`packages/`, { content,content_type :contentType ,from,from_wilaya :fromWilaya })
+
 };
 
 const Helps = {

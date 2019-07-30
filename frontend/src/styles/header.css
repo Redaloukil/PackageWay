@@ -18,9 +18,14 @@ header #content h1 {
     font-weight:300;
 }
 
+header #content p {
+    margin-bottom:3%;
+}
+
 header .roles {
     margin-top:3%;
     padding:30px 20px;
+    border-radius:4px;
 }
 .role {
     text-align: center;

@@ -8,10 +8,15 @@
 
 .section-paragraph {
     color: #d496a7;
+    
 }
 .center {
     text-align: center;
     margin-bottom:100px;
+    padding:2%;
+}
+.jobs {
+    border-radius:4px;
     padding:2%;
 }
 
@@ -19,6 +24,11 @@
     vertical-align: middle;
 }
 
+#Home-image {
+    background-image: url("https://via.placeholder.com/1000x1000");
+    background-size: cover;
+    height:40vh;
+}
 
 
 

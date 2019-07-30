@@ -13,18 +13,7 @@ import {
 } from '../constants/actionTypes';
 import '../styles/dashbord.css';
 
-const EditProfileSettings = props => {
-  if (props.isUser) {
-    return (
-      <Link
-        to="/settings"
-        className="btn btn-sm btn-outline-secondary action-btn">
-        <i className="ion-gear-a"></i> Edit Profile Settings
-      </Link>
-    );
-  }
-  return null;
-};
+
 const mapStateToProps = state => ({
   packages : state.packageList.packages,
   currentUser: state.common.currentUser,
@@ -48,38 +37,41 @@ class Dashbord extends React.Component {
 
   renderTabs() {
     return (
-      <nav class="navbar bg-light">
-      <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/dashbord/packages/">
-              My packages
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/dashbord/notrecovered/">
-              Not Recovered
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/dashbord/recovered/">
-              Recovered
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/dashbord/requests/">
-              Recovered
-            </Link>
-          </li>
-      </ul>
-      </nav>
+      <div className="col-sm-3">
+        <nav class="navbar bg-light">
+          <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/dashbord/packages/">
+                  My packages
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/dashbord/notrecovered/">
+                  Not Recovered
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/dashbord/recovered/">
+                  Recovered
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/dashbord/requests/">
+                  Recovered
+                </Link>
+              </li>
+          </ul>
+        </nav>
+      </div>
+      
       
     );
   }
@@ -100,11 +92,9 @@ class Dashbord extends React.Component {
           <div className="col-sm-9">
             <Switch>
               <Route exact path="/dashbord/packages/" component={PackagesList}/>
-              <Route path="/dashbord/notrecovered/" component={NotRecovered} />
-              <Route path="/dashbord/recovered/" component={Recovered}/>
-              <Route path="/dashbord/requests/" component={RequestsList}/>
-              <Route path="/dashbord/donate/" component={RequestsList}/>
-            </Switch>
+              <Route exact path="/dashbord/donate/" component={}/>
+              <Route exact path="/dashbord/settings/" component={}/>
+             </Switch>
           </div>
 
         </div>

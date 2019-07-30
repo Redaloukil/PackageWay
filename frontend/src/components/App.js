@@ -10,6 +10,7 @@ import Login from '../components/Login';
 import Dashbord from '../components/Dashbord';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
+import Footer from './Footer';
 
 import { store } from '../store';
 import { push } from 'react-router-redux';
@@ -66,6 +67,7 @@ class App extends React.Component {
               <Route path="/dashbord/" component={Dashbord}/>
               <Route path="/settings/" component={Settings}/>
             </Switch>
+          <Footer/>
           </main>  
           
         </div>
@@ -75,14 +77,12 @@ class App extends React.Component {
       <div>
         <Header
           appName={this.props.appName}
-          currentUser={this.props.currentUser} />
+          currentUser={this.props.currentUser}/>
       </div>
     );
   }
 }
 
-// App.contextTypes = {
-//   router: PropTypes.object.isRequired
-// };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
