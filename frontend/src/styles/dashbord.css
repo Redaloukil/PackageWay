@@ -1,0 +1,25 @@
+.dashbord {
+    padding-top:13vh;
+}
+#left-bar {
+    background-color: #f4f4f4;
+    height: 90vh;
+    padding:2% 0%;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+}
+#left-bar .nav-item {
+    display: inline-block;
+    width:100%;
+}
+
+#left-bar .navbar-nav .nav-item+.nav-item {
+    margin-left:0;
+}
+
+#left-bar .nav-item:hover {
+    background-color: white;
+    padding:2% 3%;
+}
+#right-bar {
+
+}

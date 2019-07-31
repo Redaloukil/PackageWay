@@ -21,9 +21,9 @@ section {
     background-color:#d496a7;
     border-radius:200px;
     color: #fff;
-    padding:15px 30px;
+    padding:8px 30px;
     font-weight:400;
-    font-size:120%;
+    font-size:100%;
 }
 
 .action:hover {

@@ -28,7 +28,8 @@ class LoginView(APIView):
         if user:
             serializer = UserSerializerLogin(user)
             return Response(serializer.data)
-        return Response({ "error" : "wrong credentials please verify you username or password" },status=status.HTTP_401_UNAUTHORIZED)
+        
+        return Response({{"credentials" : ["wrong credentials please verify you username or password"] }},status=status.HTTP_401_UNAUTHORIZED)
 
 # logout
 class LogoutView(APIView):

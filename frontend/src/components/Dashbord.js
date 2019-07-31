@@ -37,8 +37,8 @@ class Dashbord extends React.Component {
 
   renderTabs() {
     return (
-      <div className="col-sm-3">
-        <nav class="navbar bg-light">
+      
+        
           <ul className="navbar-nav">
               <li className="nav-item">
                 <Link
@@ -69,8 +69,8 @@ class Dashbord extends React.Component {
                 </Link>
               </li>
           </ul>
-        </nav>
-      </div>
+        
+      
       
       
     );
@@ -78,29 +78,24 @@ class Dashbord extends React.Component {
 
   render() {
     return (
-      <div id="dashbord" className="wrapper">
-      // <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+      <div className="dashbord">
         <div className="container-fluid"> 
-        <section id="bord">
-        <div className="container-fluid">
-        <div className="row">
-          <div className="col-sm-3">
-            {this.props.currentUser ? <h1>{this.props.currentUser.username}</h1> : null}
-            {this.renderTabs()}
+          <div className="row">
+            <div id="left-bar"className="col-sm-2">
+              {this.renderTabs()}
+            </div>
+            <div className="col-sm-8">
+              <Switch>
+                <Route exact path="/dashbord/packages/" component={PackagesList}/>
+                <Route exact path="/dashbord/donate/" component={Donate}/>
+                <Route exact path="/dashbord/requests/" component={RequestsList}/>
+                <Route exact path="/dashbord/settings/" component={Settings}/>
+              </Switch>
+            </div>
 
           </div>
-          <div className="col-sm-9">
-            <Switch>
-              <Route exact path="/dashbord/packages/" component={PackagesList}/>
-              <Route exact path="/dashbord/donate/" component={Donate}/>
-              <Route exact path="/dashbord/requests/" component={RequestsList}/>
-              <Route exact path="/dashbord/settings/" component={Settings}/>
-             </Switch>
-          </div>
-
-        </div>
-      </div>
-      </section>
+      
+      
 
         </div>
                 

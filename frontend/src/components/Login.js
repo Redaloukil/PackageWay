@@ -54,15 +54,15 @@ class Login extends React.Component {
               <h1 className="text-xs-left">Login</h1>
             </div>
           </div>        
-          <div className="container page">
+          <div className="page container">
 
           <div className="row">
           
 
-            <div className="col-md-10 offset-md-1 col-xs-12 form-block">
-            <div class="alert alert-light" role="alert">
-            {this.props.errors}
-          </div>  
+            <div className="col-md-12 col-xs-12 form-block">
+              <div class="alert alert-light" role="alert">
+              {this.props.errors}
+              </div>  
               <h1 className="text-xs-left"></h1>
               <p className="text-xs-left">
                 <Link to="/register">

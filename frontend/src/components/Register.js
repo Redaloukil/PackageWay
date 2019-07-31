@@ -26,6 +26,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'cpassword', value }),
   onSubmit: (username , firstName , lastName ,password) => {
       dispatch({ type: REGISTER, payload :agent.Auth.register(username, firstName , lastName , password) })},
+  onVerify : (payload) => 
+      dispatch({type:FORM_VERIFY , payload }),
   onUnload: () =>
     dispatch({ type: REGISTER_PAGE_UNLOADED })
 });
@@ -67,7 +69,7 @@ class Register extends React.Component {
       const errors = this.validate();
       this.setState({errors});
       if (Object.keys(this.state.errors).length === 0) {
-          this.props.onSubmit(this.props.username ,this.props.firstName,this.props.lastName ,this.password)
+          this.props.onSubmit(this.props.username ,this.props.firstName,this.props.lastName ,this.props.password)
       }
     }
   }
@@ -94,7 +96,7 @@ class Register extends React.Component {
       <div className="container page">
         <div className="row">
 
-          <div className="col-md-10 offset-md-1 col-xs-12 form-block">
+          <div className="col-md-12 col-xs-12 form-block">
             <div class="alert alert-light" role="alert">
               {this.props.errors}
             </div>  

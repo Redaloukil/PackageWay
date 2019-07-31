@@ -22,11 +22,37 @@
 
 #who {
     vertical-align: middle;
+    padding:6% 10%;
+}
+#who h1{
+    font-weight: 300;
+    font-size:400%;
+    margin-bottom:2%;
+}
+#who p{
+    font-size:100%;
+    line-height:2.0rem;
+    opacity:0.8;
+}
+#who .action {
+    padding-right:30px;
+    padding-top:8px;
+    padding-top:8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    
+}
+#who .action:hover {
+    padding-left:20px;
+    padding-right:40px;
+    
+    
 }
 
 #Home-image {
-    background-image: url("https://via.placeholder.com/1000x1000");
-    background-size: cover;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1550751187-da63f7e2b4eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
+    background-position-y: 90%;
+    background-size:cover;
     height:40vh;
 }
 

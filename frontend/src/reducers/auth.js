@@ -10,16 +10,12 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
     case LOGIN:
-      return {
-        ...state,
-        inProgress: false,
-        errors: action.error ? action.payload.response.body.error : null,
-      };
     case REGISTER:
       return {
         ...state,
         inProgress: false,
         errors: action.error ? action.payload.body : null,
+        formError : action.payload ? action.payload : null, 
       };
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
