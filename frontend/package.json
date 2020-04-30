@@ -9,7 +9,7 @@
   "dependencies": {
     "@urbica/react-map-gl": "^1.6.0",
     "history": "^4.6.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^0.53.1",
     "marked": "^0.3.6",
     "prop-types": "^15.5.10",
