@@ -1,0 +1,11 @@
+General description about each entity in the database:
+
+* Donators. are the people who do donations, donator can publish the things that he want to donate in the platform.
+
+* Associations(receivers of donations).
+
+* Volunteers: Volunteer is a helper for associative work.
+
+* Donations: Donated by donator,  .
+
+* Call: Call for action , it's a call for help from an association, each call is created by an association, association has to specify which help it needs

@@ -1,26 +1,15 @@
 version: '2'
 
 volumes:
-  postgres_data_local: {}
-  postgres_backup_local: {}
+  postgres_data_local:
+  postgres_backup_local:
 
 
 services:
-  frontend:
-    build:
-      context: ./frontend/
-      dockerfile: ./compose/Dockerfile
-    volumes:
-    - ./frontend/:/app
-    ports:
-    - "4100:4100"
-  
   django: &django
     build:
       context: ./backend/
       dockerfile: ./compose/Dockerfile
-    depends_on:
-      - postgres
     volumes:
       - ./backend:/app
     environment:
@@ -29,34 +18,23 @@ services:
     ports:
       - "8000:8000"
     command: /start.sh
+    depends_on:
+      - postgres
 
   postgres:
     build:
       context: ./backend/
       dockerfile: ./compose/postgres/Dockerfile
+    container_name: db
     volumes:
       - postgres_data_local:/var/lib/postgresql/data
       - postgres_backup_local:/backups
     environment:
       - POSTGRES_USER=backend
-
+      - POSTGRES_PASSWORD=backend
+    depends_on:
+      - redis
   redis:
     image: redis:3.0
 
-  # celeryworker:
-  #   # https://github.com/docker/compose/issues/3220
-  #   <<: *django
-  #   depends_on:
-  #     - redis
-  #     - postgres
-  #   ports: []
-  #   command: /start-celeryworker.sh
 
-  # celerybeat:
-  #   # https://github.com/docker/compose/issues/3220
-  #   <<: *django
-  #   depends_on:
-  #     - redis
-  #     - postgres
-  #   ports: []
-  #   command: /start-celerybeat.sh

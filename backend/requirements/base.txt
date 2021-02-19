@@ -1,20 +1,18 @@
-pytz==2019.1  # https://github.com/stub42/pytz
 argon2-cffi==19.1.0  # https://github.com/hynek/argon2_cffi
 redis==3.2.1  # https://github.com/antirez/redis
 
 # Django
 # ------------------------------------------------------------------------------
-django==2.0.13  # pyup: < 2.1  # https://www.djangoproject.com/
-django-environ==0.4.5  # https://github.com/joke2k/django-environ
+django==3.1.6  # pyup: < 2.1  # https://www.djangoproject.com/
+django-environ  # https://github.com/joke2k/django-environ
 django-model-utils==3.1.2  # https://github.com/jazzband/django-model-utils
 django-allauth #https://github.com/FactoryBoy/somelink
-
-django-redis==4.10.0  # https://github.com/niwinz/django-redis
+django-redis # https://github.com/niwinz/django-redis
 
 # Django REST Framework
 # ------------------------------------------------------------------------------
-djangorestframework==3.9.2  # https://github.com/encode/django-rest-framework
-coreapi==2.3.3  # https://github.com/core-api/python-client
+djangorestframework==3.12.2  # https://github.com/encode/django-rest-framework
+coreapi # https://github.com/core-api/python-client
 
 # Social authnetication library
 # ------------------------------------------------------------------------------

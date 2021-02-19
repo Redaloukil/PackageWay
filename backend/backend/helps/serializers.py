@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Call
+from .models import Help
 
-class CallSerializer(serializers.ModelSerializer):
+class HelpSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Call
-        fields = "__all__" 
+        model = Help
+        fields = "__all__"

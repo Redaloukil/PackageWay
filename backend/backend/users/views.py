@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from backend.users.models import User , Profile
 from backend.users.serializers import (
     UserSerializer ,
-    UserSerializerCreate , 
+    UserSerializerCreate ,
     UserSerializerUpdate ,
     UserSerializerLogin
 )
@@ -23,12 +23,12 @@ class LoginView(APIView):
         """
         Get user data and API token
         """
-        
+
         user = authenticate(username=request.data.get('username'), password=request.data.get('password'))
         if user:
             serializer = UserSerializerLogin(user)
             return Response(serializer.data)
-        
+
         return Response({{"credentials" : ["wrong credentials please verify you username or password"] }},status=status.HTTP_401_UNAUTHORIZED)
 
 # logout
@@ -38,14 +38,13 @@ class LogoutView(APIView):
         """
         Remove API token
         """
-
         token = get_object_or_404(Token, key=request.auth)
         token.delete()
         return Response(status=status.HTTP_200_OK)
 
 # users
 class UserView(APIView):
-       
+
     @staticmethod
     def get(request):
         """
@@ -73,7 +72,6 @@ class UserView(APIView):
 
 # users/{id}
 class UserDetail(APIView):
-        
     @staticmethod
     def get(request, id):
         """
@@ -112,14 +110,13 @@ class UserDetail(APIView):
 
 
 class GetCurrentUser(APIView):
-       
+
     @staticmethod
     def get(request):
-        if request.user.is_authenticated : 
+        if request.user.is_authenticated :
             user = get_object_or_404(User , id=request.user.id)
             if user :
                 serializer = UserSerializer(user)
                 return Response(data=serializer.data ,status=status.HTTP_200_OK)
-            return Response(status=status.HTTP_204_NO_CONTENT) 
+            return Response(status=status.HTTP_204_NO_CONTENT)
         return Response({'authentification':'you are authenticated'})
-        

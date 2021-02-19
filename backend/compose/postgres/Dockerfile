@@ -1,4 +1,4 @@
-FROM postgres:9.6
+FROM postgres:latest
 
 # COPY ./compose/production/postgres/backup.sh /usr/local/bin/backup
 # RUN chmod +x /usr/local/bin/backup
