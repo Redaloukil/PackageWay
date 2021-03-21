@@ -1,0 +1,13 @@
+django==3.1.6  # pyup: < 2.1  # https://www.djangoproject.com/
+
+psycopg2-binary==2.8.5
+
+psycopg2
+
+djangorestframework
+
+markdown       # Markdown support for the browsable API.
+
+django-filter  # Filtering support
+
+djangorestframework_simplejwt

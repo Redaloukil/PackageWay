@@ -1,5 +1,5 @@
-argon2-cffi==19.1.0  # https://github.com/hynek/argon2_cffi
-redis==3.2.1  # https://github.com/antirez/redis
+argon2-cffi # https://github.com/hynek/argon2_cffi
+redis  # https://github.com/antirez/redis
 
 # Django
 # ------------------------------------------------------------------------------
@@ -11,9 +11,10 @@ django-redis # https://github.com/niwinz/django-redis
 
 # Django REST Framework
 # ------------------------------------------------------------------------------
-djangorestframework==3.12.2  # https://github.com/encode/django-rest-framework
+djangorestframework # https://github.com/encode/django-rest-framework
 coreapi # https://github.com/core-api/python-client
 
 # Social authnetication library
 # ------------------------------------------------------------------------------
 social-auth-app-django
+psycopg2

@@ -1,0 +1,14 @@
+# - model: users.User
+#   pk: 1
+#   fields:
+#     email: john@gmail.com
+#     first_name: John
+#     last_name: Lennon
+#     password: now_naw
+# - model: users.User
+#   pk: 2
+#   fields:
+#     email: john2@gmail.fr
+#     first_name: Paul
+#     last_name: McCartney
+#     password: hey_people
