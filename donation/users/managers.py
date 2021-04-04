@@ -32,7 +32,6 @@ class UserManager(BaseUserManager):
             raise ValueError(_('Staff must have is_superuser=False.'))
         return self.create_user(email, first_name, last_name, password, **extra_fields)
 
-
     def create_superuser(self, email, first_name , last_name, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)

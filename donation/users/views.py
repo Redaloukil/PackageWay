@@ -10,7 +10,7 @@ from users.serializers import UserLoginSerializer , UserSignupSerializer , UserU
 
 class UsersView(APIView):
     permission_classes = [IsAuthenticated]
-    
+
     @staticmethod
     def get(request):
         users = User.objects.all()
@@ -19,6 +19,7 @@ class UsersView(APIView):
 
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
+    
     @staticmethod
     def get(request,id):
         try:
@@ -31,6 +32,8 @@ class UserView(APIView):
     
     @staticmethod
     def put(request, id):
+        permission_classes = [IsAuthenticated]
+
         user = User.objects.get(id=id)
         user_serializer = UserUpdateSerializer(request.data)
         if user_serializer.is_valid:
@@ -45,6 +48,21 @@ class UserView(APIView):
 
     @staticmethod
     def delete(request,id):
-        User.objects.delete(id=id)
+        permission_classes = [IsAuthenticated]
+        
+        user = User.objects.get(id=id)
+        user.delete()
         return Response({'message':'user has been succefully deleted'},status=200)
     
+
+class UsersQueryView(APIView):
+        """
+        Query version of Users view.
+
+        query = {"from":number, perPage:number}
+        """
+        def get(request):
+            query = request.body.query
+            if query: 
+                pass
+            return Response({},status=200)
