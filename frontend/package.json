@@ -11,7 +11,7 @@
     "history": "^4.6.3",
     "jquery": "^3.4.1",
     "mapbox-gl": "^0.53.1",
-    "marked": "^0.3.6",
+    "marked": "^4.0.10",
     "prop-types": "^15.5.10",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
